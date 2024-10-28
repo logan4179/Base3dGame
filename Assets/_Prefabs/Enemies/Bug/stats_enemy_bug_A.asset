@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599179b0a58a9434d826b629fa623594, type: 3}
+  m_Name: stats_enemy_bug_A
+  m_EditorClassIdentifier: 
+  Speed_Move_running: 6.02
+  Speed_Rotate_patrol: 1.1
+  Speed_Rotate_fast: 5
+  Speed_move_patrol: 0.62
+  Speed_suspicious: 1.2
+  Speed_charging: 19.3
+  force_Torque_regular: 0
+  force_Torque_excited: 0
+  Distance_vision: 15
+  Threshold_VisionRadius: 0.192
+  visionRangeVertical: 0.65
+  SuspicionMultiplier_distance: 30
+  SuspicionMultiplier_direction: 10
+  HearingMultiplier: 0.198
+  normalPatrolRadius: 20
+  dist_newPatrolPoint_max: 13
+  dist_newPatrolPoint_min: 4
+  Percentage_consideredRoughlyFacing_patrolPt: 0.721
+  dist_MaxPatrolCanBeFromMyOrigin: 20
+  Duration_PatrolWait_min: 4
+  Duration_PatrolWait_max: 13
+  dist_chaseTo: 6.41
+  Duration_alertPursuit: 30
+  Dist_TriggerChasing_fromEngaging: 6
+  Height_TriggerChasing_fromEngaging: 0
+  Percentage_consideredRoughlyFacing_threat: 0.776
+  Dist_TriggerEngaging: 3
+  dist_RoughlyThere: 0.14
+  AggressionLevel: 3.64
+  Duration_MinWaitBetweenAttacks: 2
+  Duration_ApproachWithIntentToStrike: 6
+  Attack_basicStrike:
+    AmRanged: 0
+    Reach: 1
+    Damage: 10
+    Force: 10
+    Likelihood: 11.9
+    AnimId: 0
+    AnimChoiceNumber: 0
+  Attack_charge:
+    AmRanged: 0
+    Reach: 0
+    Damage: 15
+    Force: 15
+    Likelihood: 15.3
+    AnimId: 0
+    AnimChoiceNumber: 1
+  Duration_cd_TakingDamage: 0.5
+  dist_jumpCheck: 0.1
+  jumpSphereVerticalOffset: 0
+  yThreshAmGrounded: 0
+  jumpRecoverBufferLength: 0.3
+  landForceThreshold: 0
+  AcString_Walking: b_Walking
+  AcString_Running: b_Running
+  AcString_Attack: t_Attack
+  AcString_AttackChoice: i_AttackChoice
+  AcString_TakingDamage: t_TakingDamage
+  AcString_Dying: t_Dying
+  AcString_i_DamageClip: i_DamageClip

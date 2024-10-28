@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70dc0fe1955ac6041ba0e1748768e0c9, type: 3}
+  m_Name: stats_FullAutoRifle
+  m_EditorClassIdentifier: 
+  MyItemName: 1
+  itemName_myAmmo: 3
+  Amount_Damage: 20
+  Force_Damage: 16
+  Amount_Recoil: 0.01445
+  fireRatePerSecond: 18
+  count_singleClipCapacity: 30
+  dist_BulletRaycast: 100
+  duration_cd_DrawGun: 0.18
+  duration_Light_MuzzleFlash_On: 0.15
+  audioClip_fireBullet: {fileID: 8300000, guid: ad712bbc878619642b9198dfc343c906, type: 3}
+  audioClip_click: {fileID: 8300000, guid: 0c91814ab1e3c0648bdbdaab909ed568, type: 3}
+  audioClip_reload: {fileID: 8300000, guid: 3ca8dc33c2efd214685d285c7f47322b, type: 3}
+  audioClip_switchFireMode: {fileID: 8300000, guid: 0c91814ab1e3c0648bdbdaab909ed568, type: 3}
+  AcString_WeaponDrawn: b_WeaponDrawn
+  AcString_Recoil: t_recoil

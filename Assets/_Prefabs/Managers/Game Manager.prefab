@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6288360102337875263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7536829296786115907}
+  - component: {fileID: 334465156}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7536829296786115907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6288360102337875263}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9130563, y: 0.614129, z: -1.833261}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &334465156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6288360102337875263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11c65dbafb6cca4d9a858f97bcb6aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amDebug_exposed: 0
+  amPaused_exposed: 0
+  mouseControlOn_exposed: 0
+  slowAttacks_exposed: 0
+  _scrSurroundPivot_exposed: {fileID: 0}
+  _groundCol: {fileID: 0}
+  transEnemies: []
+  prefab_basicEnemy: {fileID: 0}
+  prefab_pSys_swordSpark_exposed: {fileID: 0}
+  axis_horizontal_exposed: 0
+  axis_vertical_exposed: 0
+  axis_horizontalRight_exposed: 0
+  axis_verticalRight_exposed: 0
+  axis_MouseX_exposed: 0
+  axis_MouseY_exposed: 0
+  matRed_exposed: {fileID: 0}
+  matWhite_exposed: {fileID: 0}
+  matWhiteTrans_exposed: {fileID: 0}
+  matBlue_exposed: {fileID: 0}
+  matRedTrans_exposed: {fileID: 0}
+  matBlueTrans_exposed: {fileID: 0}
+  matGreen_exposed: {fileID: 0}
+  matGreenTrans_exposed: {fileID: 0}
+  matPurple_exposed: {fileID: 0}

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f4ec59bb9156348814e50632f7c732, type: 3}
+  m_Name: controlSchemeA
+  m_EditorClassIdentifier: 
+  Keycode_Interact: 101
+  Keycode_Interact_gamepad: 330
+  Keycode_FlashlightToggle: 102
+  Keycode_FlashlightToggle_gamepad: 339
+  Keycode_PauseToSettings: 27
+  Keycode_PauseToSettings_gamepad: 337
+  Keycode_PauseToInventory: 105
+  Keycode_PauseToInventory_gamepad: 336
+  Keycode_BackOneLevel: 27
+  Keycode_BackOneLevel_gamepad: 337
+  KeyCode_Fire_mouse: 323
+  AxisString_Fire_gamepad: RightTrigger
+  Keycode_Aim_mouse: 324
+  AxisString_Aim_gamepad: LeftTrigger
+  Keycode_Reload: 114
+  Keycode_Reload_gamepad: 331
+  Keycode_SwitchFireMode: 120
+  Keycode_SwitchFireMode_gamepad: 333
+  Keycode_FirstWeapon: 49
+  Keycode_SecondWeapon: 50
+  AxisString_horizontal: Horizontal
+  AxisString_vertical: Vertical
+  AxisString_RHorizontal: RHorizontal
+  AxisString_RVertical: RVertical
+  AxisString_MouseX: Mouse X
+  AxisString_MouseY: Mouse Y
+  AxisString_dpad_horizontal: Horizontal_dpad
+  AxisString_dpad_vertical: Vertical_dpad
+  Speed_movementLerp: 80

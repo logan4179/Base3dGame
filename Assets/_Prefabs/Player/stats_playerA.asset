@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4430c900aca40cf489202a535a12dd8b, type: 3}
+  m_Name: stats_playerA
+  m_EditorClassIdentifier: 
+  moveSpeed_run: 7
+  MoveSpeed_walk: 2.1
+  rotateSpeed: 0
+  jumpForce: 0
+  LerpSpeed_IndependentMoveInertia: 10000
+  visLerpSpeed: 5
+  AcString_GunIsDrawn: b_GunIsDrawn
+  AcString_TakeDamageTrigger: t_TakeDamage
+  AcString_ReloadTrigger: t_Reloading
+  AcString_WeaponMode: i_weaponMode
+  AcString_EquipWeaponTrigger: t_equipWeapon
+  AcString_Airborn: b_Airborn
+  AcString_Travelling: b_AmTravelling
+  AcString_MoveSpeed_straight: f_MoveSpeed_straight
+  AcString_MoveSpeed_side: f_MoveSpeed_side
+  AcString_Die: t_Die
+  AudioClips_Footstep_ConcreteA:
+  - {fileID: 8300000, guid: 6f0087270258ea94b9bb0cf1d06567bb, type: 3}
+  - {fileID: 8300000, guid: 87d9bda03f626884f88127b6a8cedbce, type: 3}
+  - {fileID: 8300000, guid: e6f4333e565e94f4a86dc23e6c914f71, type: 3}
+  - {fileID: 8300000, guid: ef208dc2b02aa864a8f56249fc6aaec0, type: 3}
+  - {fileID: 8300000, guid: edd77e10e4ed07f40a71989bed73c716, type: 3}
+  - {fileID: 8300000, guid: 1db4aa3c24a743747acbc2bc66aa923e, type: 3}
+  - {fileID: 8300000, guid: 671987178daf845408e5a9456564a81d, type: 3}
+  - {fileID: 8300000, guid: 92208cfc0a123cd40b880e992d0041b3, type: 3}
+  distance_laserSight: 0
