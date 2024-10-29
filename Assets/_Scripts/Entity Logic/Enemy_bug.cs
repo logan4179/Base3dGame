@@ -19,12 +19,9 @@ public class Enemy_Bug : Base_Enemy_terrestrial
 	public Actions_bugEnemy MyCurrentAction => myCurrentAction;
 
 
-
-
 	[Header("---------------[[ TRUTH ]]-----------------")]
 	/// <summary>Allows selectively turning certain features for this object off in the case of a potentially game-crashing error.</summary>
 	protected bool amBugged = false;
-
 
 	//[Header("---------------[[ ANIMATION ]]-----------------")]
 	public static int animID_Walking;
@@ -35,10 +32,8 @@ public class Enemy_Bug : Base_Enemy_terrestrial
 	public static int animID_Dying;
 	public static int animID_DamageClip;
 
-
 	[Header("---------------[[ DEBUG ]]-----------------")]
 	public bool AllowEditorDebugging = false;
-
 
 
 	protected override void Awake()
@@ -46,28 +41,20 @@ public class Enemy_Bug : Base_Enemy_terrestrial
 		LogHistoric($"Awake() entered", PV_LogFormatting.UnityAPIMethod);
 		base.Awake();
 
-
 		MGR_BugEnemy.Instance.RegisterBug(this);
-
 
 		LogHistoric($"Awake() end", PV_LogFormatting.UnityAPIMethod);
 	}
-
 
 	protected override void Start()
 	{
 		LogHistoric($"Start() entered", PV_LogFormatting.UnityAPIMethod);
 		base.Start();
 
-
 		InitState();
 
-
 		LogHistoric($"Start() end", PV_LogFormatting.UnityAPIMethod);
-
-
 	}
-
 
 	void FixedUpdate()
 	{
@@ -258,7 +245,6 @@ public class Enemy_Bug : Base_Enemy_terrestrial
 	}
 #endif
 
-
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag(PV_GameManager.Tag_area))
@@ -287,7 +273,6 @@ public class Enemy_Bug : Base_Enemy_terrestrial
 		}
 	}
 
-
 	public override void InitState()
 	{
 		base.InitState();
@@ -306,7 +291,6 @@ public class Enemy_Bug : Base_Enemy_terrestrial
 		v_nrml_calculated = trans.up;
 		resetAnimations();
 	}
-
 
 	/// <summary>
 	/// An intelligent, "managed" movement method that calculates the appropriate parameters for movement such as level of haste, before
@@ -644,11 +628,15 @@ public class Enemy_Bug : Base_Enemy_terrestrial
 			enabled = false;
 		}
 
-		PV_Environment.Instance.Pool_bloodDamageEffectsA_purple.CycleSpawnAtPosition( 
-			rcHit.point, Quaternion.FromToRotation(Vector3.up, rcHit.normal)
+		PV_Environment.Instance.Pool_bloodDamageEffectsA_purple.CycleSpawnExact( 
+			rcHit.point + (Vector3.Normalize(rcHit.point - trans.position) * 0.2f), Quaternion.FromToRotation(Vector3.up, rcHit.normal)
 			);
 
-		Time.timeScale = 0.25f;
+		if( myFootSystem.MyFootState == LogansFootLogicSystem.LFLS_FootState.Grounded || myFootSystem.MyFootState == LogansFootLogicSystem.LFLS_FootState.Sliding )
+		{
+			PV_Environment.Instance.Pool_bloodSpotA_purple.CycleSpawn( 
+				myFootSystem.CurrentGroundPos + (myFootSystem.CurrentGroundNormal * 0.05f), -myFootSystem.CurrentGroundNormal );
+		}
 	}
 
 	public override void ActivateMeViaArea()
@@ -657,7 +645,6 @@ public class Enemy_Bug : Base_Enemy_terrestrial
 
 		MGR_BugEnemy.Instance.ActivateBug(this);
 	}
-
 	public override void DeactivateMeViaArea()
 	{
 		LogHistoric($"DeactivateMeViaArea('{name}')");

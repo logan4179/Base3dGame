@@ -94,6 +94,15 @@ public class Base_living : PV_Object
     {
 		LogHistoric($"{name}.takedmg", PV_LogFormatting.UserMethod);
 
+        if( rcHit.transform == null )
+        {
+            print("hit had null rb");
+        }
+        else
+        {
+            print("rb was NOT null");
+        }
+
 		hp -= amt;
 
         if( dmgForce > 0f )

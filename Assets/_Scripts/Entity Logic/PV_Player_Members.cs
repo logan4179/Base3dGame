@@ -187,10 +187,10 @@ public class PV_Player_Members : Base_living
         
     }
 
-	public override void TakeDmg(int amt, float dmgForce, Vector3 vDirForce, RaycastHit rcHit )
+	public override void TakeDmg(int amt, float dmgForce, Vector3 damageOriginPosition, RaycastHit rcHit )
     {
-        PV_Debug.LogWithConsoleConditional($"Player.TakeDmg(amt: '{amt}', dmgForce: '{dmgForce}', vDirForce: '{vDirForce}' )", false, PV_LogFormatting.UserMethod);
-        base.TakeDmg( amt, dmgForce, vDirForce, rcHit );
+        PV_Debug.LogWithConsoleConditional($"Player.TakeDmg(amt: '{amt}', dmgForce: '{dmgForce}', vDirForce: '{damageOriginPosition}' )", false, PV_LogFormatting.UserMethod);
+        base.TakeDmg( amt, dmgForce, damageOriginPosition, rcHit );
         cdTakeDamage = 0.85f;
 
         if( hp > 0 )
@@ -211,10 +211,14 @@ public class PV_Player_Members : Base_living
 
         PV_GameManager.Instance.CanvasScript_inGame.updateHP( hp );
 
-        PV_Environment.Instance.Pool_bloodDamageEffectsA_red.CycleSpawnAtPosition(
+        /*PV_Environment.Instance.Pool_bloodDamageEffectsA_red.CycleSpawnAtPosition(
             rcHit.point, Quaternion.FromToRotation(Vector3.up, rcHit.normal)
-            );
-    }
+            );*/
+
+		PV_Environment.Instance.Pool_bloodDamageEffectsA_red.CycleSpawnExact(
+	        myCollider.ClosestPoint(damageOriginPosition), Quaternion.FromToRotation(Vector3.up, rcHit.normal)
+	        );
+	}
 
     public void Heal( int amt )
     {
@@ -401,12 +405,6 @@ public class PV_Player_Members : Base_living
     public void BlastMe() //for testing sudden physics movements.
     {
         rb.AddForce(Vector3.right * dbgBlastForce, ForceMode.Impulse);
-    }
-
-    [ContextMenu("z TestInflictDamage()")]
-    public void TestInflictDamage()
-    {
-        TakeDmg(5, 0f, Vector3.zero, new RaycastHit() );
     }
 
     [ContextMenu("z ForceDeath()")]

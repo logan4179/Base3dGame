@@ -1416,7 +1416,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.13
   m_Center: {x: 0, y: 0.1, z: 0}
@@ -1457,9 +1457,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   historyDebugString: 
   MyBaseStats: {fileID: 11400000, guid: c1ecbd29c6874684c99017c7a26e4e4a, type: 2}
-  myCollider: {fileID: 0}
-  Trans_visionOrigin: {fileID: 5283909659743633836}
   DBG_Alarms: 
+  Trans_visionOrigin: {fileID: 5283909659743633836}
+  debugTravel: 
+  MyPath:
+    Index_currentPoint: -1
+    PathPoints: []
+    EndGoal: {x: 0, y: 0, z: 0}
+    dbgHistory: 
+    dbgAmOnCourse: 
+  patrolPoints_cached: []
+  trans_patrolPointGrabber: {fileID: 483391884951993586}
+  DBG_spatial: 
   MyStats_Base_Enemy: {fileID: 11400000, guid: 3f95cfdf3a3dad34bbb6686a226605db, type: 2}
   myColliders:
   - {fileID: 7794341071786848100}
@@ -1472,19 +1481,9 @@ MonoBehaviour:
   - {fileID: 7842802600512253664}
   - {fileID: 8759420941785707752}
   myAttackCollider: {fileID: 6949322169225013952}
-  pvArea_triggering: {fileID: 0}
+  area_triggering: {fileID: 0}
   DBG_State: 
   myPatrolMode: 1
-  DBG_spatial: 
-  debugTravel: 
-  MyPath:
-    Index_currentPoint: -1
-    PathPoints: []
-    EndGoal: {x: 0, y: 0, z: 0}
-    dbgHistory: 
-    dbgAmOnCourse: 
-  patrolPoints_cached: []
-  trans_patrolPointGrabber: {fileID: 483391884951993586}
   debugVisibility: 
   DBGLookToward: 
   v_nrml_calculated: {x: 0, y: 1, z: 0}
@@ -2078,6 +2077,7 @@ MonoBehaviour:
   OnLand:
     m_PersistentCalls:
       m_Calls: []
+  DbgState: 
 --- !u!1 &7838024425403306254
 GameObject:
   m_ObjectHideFlags: 0

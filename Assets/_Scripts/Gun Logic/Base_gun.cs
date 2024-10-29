@@ -171,11 +171,11 @@ public abstract class Base_gun : PV_Object
             {
                 PV_Debug.LogWithConsoleConditional("hit solid environment", amDebuggingScript);
 
-                //GameObject go_gunshot = go_gunshot = Instantiate(pfb_DclPrjr_BulletHole, rcHit_Bullet.point + (rcHit_Bullet.normal * 0.1f), Quaternion.AngleAxis(Random.Range(0f, 360f), rcHit_Bullet.normal) * Quaternion.LookRotation(-rcHit_Bullet.normal), PV_Environment.Instance.transform);
-                GameObject go_gunshot = PV_Environment.Instance.Pool_gunshotDecalsA.CycleSpawnAtPosition( rcHit_Bullet.point + (rcHit_Bullet.normal * 0.1f), Quaternion.AngleAxis(Random.Range(0f, 360f), rcHit_Bullet.normal) * Quaternion.LookRotation(-rcHit_Bullet.normal) );
+               // GameObject go_gunshot = PV_Environment.Instance.Pool_gunshotDecalsA.CycleSpawnAtPosition( rcHit_Bullet.point + (rcHit_Bullet.normal * 0.1f), Quaternion.AngleAxis(Random.Range(0f, 360f), rcHit_Bullet.normal) * Quaternion.LookRotation(-rcHit_Bullet.normal) );
+				GameObject go_gunshot = PV_Environment.Instance.Pool_gunshotDecalsA.CycleSpawn( rcHit_Bullet.point + (rcHit_Bullet.normal * 0.1f), -rcHit_Bullet.normal );
 
-            }
-            else if( lyr == PV_Environment.Instance.Layer_Living )
+			}
+			else if( lyr == PV_Environment.Instance.Layer_Living )
             {
                 PV_Debug.LogWithConsoleConditional("hit living", amDebuggingScript);
 
@@ -183,7 +183,7 @@ public abstract class Base_gun : PV_Object
 
                 if ( living_hit.Flag_amEnemy )
                 {
-                    living_hit.TakeDmg (MyStats.Amount_Damage, MyStats.Force_Damage, transform.position, rcHit_Bullet );
+                    living_hit.TakeDmg (MyStats.Amount_Damage, MyStats.Force_Damage, rcHit_Bullet.point, rcHit_Bullet );
 				}
             }
         }

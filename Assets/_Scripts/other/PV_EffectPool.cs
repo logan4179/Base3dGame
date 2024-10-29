@@ -22,9 +22,9 @@ public class PV_EffectPool : Pool
 		}
 	}
 
-	public override GameObject CycleSpawnAtPosition(Vector3 pos_passed, Quaternion rot_passed)
+	public override GameObject CycleSpawnExact(Vector3 pos_passed, Quaternion rot_passed)
 	{
-		GameObject go = base.CycleSpawnAtPosition(pos_passed, rot_passed);
+		GameObject go = base.CycleSpawnExact(pos_passed, rot_passed);
 
 		print($"{nameof(index_lastMadeActive)}: '{index_lastMadeActive}'");
 		pooledMultiEffectHandlers[index_lastMadeActive].PlayAll();

@@ -568,7 +568,7 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
 			enabled = false;
 		}
 
-		PV_Environment.Instance.Pool_bloodDamageEffectsA_green.CycleSpawnAtPosition(
+		PV_Environment.Instance.Pool_bloodDamageEffectsA_green.CycleSpawnExact(
 			rcHit.point, Quaternion.FromToRotation(Vector3.up, rcHit.normal)
 			);
 	}

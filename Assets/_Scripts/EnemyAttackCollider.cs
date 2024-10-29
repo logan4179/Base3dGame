@@ -27,9 +27,17 @@ public class EnemyAttackCollider : PV_Object
         if (other.tag == PV_GameManager.Tag_Player )
         {
             LogHistoric( $"Entered player damage collision if-check block..." );
-            PV_GameManager.Instance.PlayerScript.TakeDmg( 
-                myOwner.LoadedAttack.Damage, myOwner.LoadedAttack.Damage, transform.position, new RaycastHit() 
-                );
+
+			RaycastHit rcHit_dmg = new RaycastHit();
+
+			if( Physics.Linecast(transform.position, PV_GameManager.Instance.Trans_Player.position, out rcHit_dmg, PV_Environment.Instance.Mask_Living) )
+            {
+                print("hay");
+            }
+
+			PV_GameManager.Instance.PlayerScript.TakeDmg( 
+                myOwner.LoadedAttack.Damage, myOwner.LoadedAttack.Damage, transform.position, rcHit_dmg
+				);
             DisarmMe();
         }
     }

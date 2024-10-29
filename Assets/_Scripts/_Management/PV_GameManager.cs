@@ -222,7 +222,15 @@ public class PV_GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    void OnPromptEntered_action( PromptObject promptOb_passed )
+    [ContextMenu("z call UnpauseGame()")]
+	public void UnPauseGame()
+	{
+		myGameState = GameState.Unpaused;
+
+		Time.timeScale = 1f;
+	}
+
+	void OnPromptEntered_action( PromptObject promptOb_passed )
     {
         print($"PromptEntered_action, object: '{promptOb_passed.gameObject.name}'");
         Time.timeScale = 0f;

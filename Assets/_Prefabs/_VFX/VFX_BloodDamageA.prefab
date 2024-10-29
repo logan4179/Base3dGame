@@ -107,8 +107,8 @@ VisualEffect:
         m_Overridden: 1
       - m_Value:
           serializedVersion: 2
-          key0: {r: 0.22991776, g: 1.9137255, b: 3.1245282, a: 0}
-          key1: {r: 0, g: 0, b: 0, a: 0.5686275}
+          key0: {r: 0.2981131, g: 0.03543607, b: 0.03543607, a: 0}
+          key1: {r: 0.29803923, g: 0.03529412, b: 0.03529412, a: 0.8862745}
           key2: {r: 0, g: 0, b: 0, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
@@ -124,7 +124,7 @@ VisualEffect:
           ctime6: 0
           ctime7: 0
           atime0: 0
-          atime1: 21819
+          atime1: 15189
           atime2: 65535
           atime3: 65535
           atime4: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 7840416058653295313}
   - component: {fileID: 5776421054199784871}
   m_Layer: 0
-  m_Name: VFX_BloodDamageA_blue
+  m_Name: VFX_BloodDamageA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177236183963804846}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.39, y: 0.99399996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

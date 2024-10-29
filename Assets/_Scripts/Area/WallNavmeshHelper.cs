@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallNavmeshManager : MonoBehaviour
+/// <summary>
+/// This is meant as a helper class for any future things I might want to do with the objects in the heirarchy 
+/// that exist solely to generate wall navmeshes. Currently it doesn't do a whole lot.
+/// </summary>
+public class WallNavmeshHelper : MonoBehaviour
 {
     [SerializeField] List<GameObject> gameObjects = new List<GameObject>();
 
@@ -13,8 +17,8 @@ public class WallNavmeshManager : MonoBehaviour
     {
         foreach ( GameObject go in gameObjects )
         {
-            colliders.Add(go.GetComponent<Collider>());
-            renderers.Add(go.GetComponent<MeshRenderer>());
+            colliders.Add( go.GetComponent<Collider>() );
+            renderers.Add( go.GetComponent<MeshRenderer>() );
         }
 
         SetAllInactive();

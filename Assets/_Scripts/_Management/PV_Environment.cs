@@ -45,6 +45,18 @@ public class PV_Environment : PV_Object
 	[SerializeField] private PV_EffectPool pool_bloodDamageEffectsA_purple;
 	public PV_EffectPool Pool_bloodDamageEffectsA_purple => pool_bloodDamageEffectsA_purple;
 
+    [SerializeField] private Pool pool_bloodSpotA_red;
+    public Pool Pool_bloodSpotA_red => pool_bloodSpotA_red;
+
+	[SerializeField] private Pool pool_bloodSpotA_green;
+	public Pool Pool_bloodSpotA_green => pool_bloodSpotA_green;
+
+	[SerializeField] private Pool pool_bloodSpotA_blue;
+	public Pool Pool_bloodSpotA_blue => pool_bloodSpotA_blue;
+
+	[SerializeField] private Pool pool_bloodSpotA_purple;
+	public Pool Pool_bloodSpotA_purple => pool_bloodSpotA_purple;
+
 	[Header("LAYERS")]
     public int Layer_Solid_Environmental;
     public int Layer_Living;
@@ -60,8 +72,10 @@ public class PV_Environment : PV_Object
     public int Mask_Shootable;
     /// <summary>Mask for surfaces that muffle, but don't mute, sounds.</summary>
     public int Mask_MufflesSound;
+	/// <summary>Mask for all living entities.</summary>
+	public int Mask_Living;
 
-    [Header("----------DEBUG---------")]
+	[Header("----------DEBUG---------")]
     public static bool AmDebugging = false;
 
 
@@ -116,7 +130,9 @@ public class PV_Environment : PV_Object
         Mask_WalkableJumpable = LayerMask.GetMask("lr_EnvSolid");
         Mask_Shootable = LayerMask.GetMask("lr_EnvSolid", "lr_Living");
         Mask_MufflesSound = LayerMask.GetMask("lr_EnvSolid");
-    }
+        Mask_Living = LayerMask.GetMask("lr_Living");
+
+	}
 
     /// <summary>Returns a random vector for enemy patrols.</summary>
     /// <param name="sampleOrigin">Origin position to find a random spot around.</param>

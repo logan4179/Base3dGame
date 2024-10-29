@@ -28,6 +28,8 @@ public class PV_SceneDebugger : MonoBehaviour
 	[SerializeField] private PV_Player playerScript;
 	private Player_debugInfo _playerDebugInfo;
 
+	[SerializeField] private Transform trans_testDmgOnPlr;
+
 	[Header("[------ BUG ENEMIES ------]")]
 	//[SerializeField, Tooltip("Orders all enemies to go into \"debug mode\" whenever the debug toggle is triggered on the debug canvas. Only relevant in play mode")]
 	private bool debugAllBugEnemiesToggle = false;
@@ -384,6 +386,43 @@ public class PV_SceneDebugger : MonoBehaviour
 		yield return new WaitForSeconds(0.35f);
 
 		playerScript.TakeDmg( 110, 0f, Vector3.zero, new RaycastHit() );
+	}
+
+	public void TestPlayerDamage()
+	{
+		RaycastHit rcHit_dmg;
+		Ray ray_bullet = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
+		/*
+		if (amDebuggingScript) Debug.DrawRay(ray_bullet.origin, ray_bullet.direction * MyStats.dist_BulletRaycast, Color.white, 1f);
+
+		if (Physics.Raycast(ray_bullet, out rcHit_dmg, MyStats.dist_BulletRaycast, PV_Environment.Instance.Mask_Shootable))
+		{
+			int lyr = rcHit_dmg.transform.gameObject.layer;
+
+			PV_Debug.LogWithConsoleConditional($"HIT object: '{rcHit_dmg.transform.name}', layer: '{lyr}'.", amDebuggingScript);
+			if (lyr == PV_Environment.Instance.Layer_Solid_Environmental)
+			{
+				PV_Debug.LogWithConsoleConditional("hit solid environment", amDebuggingScript);
+
+				//GameObject go_gunshot = go_gunshot = Instantiate(pfb_DclPrjr_BulletHole, rcHit_Bullet.point + (rcHit_Bullet.normal * 0.1f), Quaternion.AngleAxis(Random.Range(0f, 360f), rcHit_Bullet.normal) * Quaternion.LookRotation(-rcHit_Bullet.normal), PV_Environment.Instance.transform);
+				GameObject go_gunshot = PV_Environment.Instance.Pool_gunshotDecalsA.CycleSpawnAtPosition(rcHit_dmg.point + (rcHit_dmg.normal * 0.1f), Quaternion.AngleAxis(Random.Range(0f, 360f), rcHit_dmg.normal) * Quaternion.LookRotation(-rcHit_dmg.normal));
+
+			}
+			else if (lyr == PV_Environment.Instance.Layer_Living)
+			{
+				PV_Debug.LogWithConsoleConditional("hit living", amDebuggingScript);
+
+				Base_living living_hit = rcHit_dmg.transform.gameObject.GetComponent<Base_living>();
+
+				if (living_hit.Flag_amEnemy)
+				{
+					living_hit.TakeDmg(MyStats.Amount_Damage, MyStats.Force_Damage, transform.position, rcHit_dmg);
+				}
+			}
+
+		        TakeDmg(5, 0f, Vector3.zero, rcHit );
+
+		}*/
 	}
 
 	public void DebugAnimator(Animator anim_passed)
