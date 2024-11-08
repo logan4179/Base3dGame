@@ -1,0 +1,36 @@
+To Set up a character in a new scene completely from scratch:
+	* Will need to make sure an animator, rigidbody, and possibly a colvis object are all set up. Tag the player object "Player"
+	* Set necessary stats variables (speed variables, etc)
+	* Will need animator to have all bools and triggers called in code.
+	* Now there will be a problem with the canMove boolean and possibly amGrounded.  You can tweak distJumpCheck to deal with amGrounded, but canMove, I believe, might be designed to be used
+	via animation events. You can just click it in the inspector to on until you set up the animations.
+	* For the "Rig" section upon import, what worked for me was:
+		* Animation Type: Generic
+		* Avatar Definition: Create From Model
+		* Root node: group1 (the first one on the list)
+	* Finally, when I set this up, it didn't automatically apply the avatar to the animator, so you may need to do this manually, or you won't get animations...
+		
+
+To Set up a new enemy:
+	* Make sure to add it to G.RegisterPlayer()
+	* Needs an animator, rigidbody, capsule collider, a "colVisual" object parented to it, 
+
+To set up a gun
+	* 
+
+To Set up a Prompt
+	* Create your object prefab. Give it a trigger collider tagged "Prompt" 
+	* Add the prompt object to the mgrEnvironment.go_prompts (note: make sure to add the object that actually has the collider tagged "Prompt" and not an umbrella object for example) and give it a corresponding message in mgrEnvironment.go_Prompts_strings.
+
+Add a collider visual
+	* For things that can't be expressed by the gizmo primitives like capsules, place a visible object to represent your 
+	  collider in the prefab, and tag it with "colObj"
+	* That's it! The environment manager will now be able to find it via U.GetComponentsWithTag()
+	* For things that can be expressed with gizmo primitives like spheres...
+
+
+
+
+--------------------------------------------------CODE CONVENTIONS--------------------------------------------------
+* Use an underscore to refer to foreign user-made scripts (not unity components) at beginning of reference variable name (IE: '_scrPlayer' to refer to the player script in some other script).
+* 

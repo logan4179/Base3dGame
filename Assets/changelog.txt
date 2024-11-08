@@ -1,0 +1,17 @@
+v_12/13/21
+	* Working on:
+		* Selection of inventory items
+		* Added "map" as 3rd pause menu button.
+
+
+* Implemented MenuObject.cs for instance-based menu controll.
+* Changed G.cs delegates/events to UnityEvents.
+* Fixed issues with gun firing full auto logic
+* Implemented both controller and mouse control of gun aiming and firing
+
+Since last push-------------
+* Big and minor cleanups to code
+* Changed masking system to be more reliable by grabbing from Unity with LayerMask.GetMask("<layer name>"); instead of calculating manually
+* Moved level2 and level3 logic coroutines from the enemy instances to the enemy manager, which will presumably be more efficient.
+* Implemented different method of checking relative positioning for living entities.
+* Took away some of the sword fighting implementations that weren't needed from my previous codebase.

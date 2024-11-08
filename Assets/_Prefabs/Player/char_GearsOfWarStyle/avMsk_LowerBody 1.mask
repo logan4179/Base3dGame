@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: avMsk_LowerBody 1
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/b_ArmIK.L
+    m_Weight: 0
+  - m_Path: Armature/b_ArmIK.L/b_ArmIK.L_end
+    m_Weight: 1
+  - m_Path: Armature/b_ArmIK.R
+    m_Weight: 0
+  - m_Path: Armature/b_ArmIK.R/b_ArmIK.R_end
+    m_Weight: 1
+  - m_Path: Armature/b_ArmIK_pole.L
+    m_Weight: 0
+  - m_Path: Armature/b_ArmIK_pole.L/b_ArmIK_pole.L_end
+    m_Weight: 1
+  - m_Path: Armature/b_ArmIK_pole.R
+    m_Weight: 0
+  - m_Path: Armature/b_ArmIK_pole.R/b_ArmIK_pole.R_end
+    m_Weight: 1
+  - m_Path: Armature/b_LegIK_pole.L
+    m_Weight: 1
+  - m_Path: Armature/b_LegIK_pole.L/b_LegIK_pole.L_end
+    m_Weight: 1
+  - m_Path: Armature/b_LegIK_pole.R
+    m_Weight: 1
+  - m_Path: Armature/b_LegIK_pole.R/b_LegIK_pole.R_end
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.L
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.L/b_Shin.L
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.L/b_Shin.L/b_Foot.L
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.L/b_Shin.L/b_Foot.L/b_Toe.L
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.L/b_Shin.L/b_Foot.L/b_Toe.L/b_Toe.L_end
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.R
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.R/b_Shin.R
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.R/b_Shin.R/b_Foot.R
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.R/b_Shin.R/b_Foot.R/b_Toe.R
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Femur.R/b_Shin.R/b_Foot.R/b_Toe.R/b_Toe.R_end
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.L
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.L/b_Humerus.L
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.L/b_Humerus.L/b_Forearm.L
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.L/b_Humerus.L/b_Forearm.L/b_Palm.L
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.L/b_Humerus.L/b_Forearm.L/b_Palm.L/b_Hand.L
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.L/b_Humerus.L/b_Forearm.L/b_Palm.L/b_Hand.L/b_Hand.L_end
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.R
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.R/b_Humerus.R
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.R/b_Humerus.R/b_Forearm.R
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.R/b_Humerus.R/b_Forearm.R/b_Palm.R
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.R/b_Humerus.R/b_Forearm.R/b_Palm.R/b_Hand.R
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Clavicle.R/b_Humerus.R/b_Forearm.R/b_Palm.R/b_Hand.R/b_Hand.R_end
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Sternum
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Sternum/b_Neck
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Sternum/b_Neck/b_Head
+    m_Weight: 1
+  - m_Path: Armature/b_Pelvis/b_Spine1/b_Spine2/b_Sternum/b_Neck/b_Head/b_Head_end
+    m_Weight: 1
+  - m_Path: Armature/IK_TargetHeel.L
+    m_Weight: 1
+  - m_Path: Armature/IK_TargetHeel.L/IK_TargetHeel.L_end
+    m_Weight: 1
+  - m_Path: Armature/IK_TargetHeel.R
+    m_Weight: 1
+  - m_Path: Armature/IK_TargetHeel.R/IK_TargetHeel.R_end
+    m_Weight: 1
+  - m_Path: Commando_Mesh.001
+    m_Weight: 1

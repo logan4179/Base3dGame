@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c39ab7db1957fd41aa5760d4ec56cff, type: 3}
+  m_Name: 3rdPersonFree_showcase
+  m_EditorClassIdentifier: 
+  optionalDescription: 
+  Mode: 2
+  Speed_Move: 810
+  OriginAnchorPoint: {x: 0, y: 0, z: 0}
+  dist_follow: 1.66
+  height_orbit: 0
+  sideOffsetAmt: 0
+  AmHandlingIntersections: 1
+  IntersectingMask: 0
+  dist_lookInFrontOfPlayer: 0
+  MaxVertTilt: 0.81
+  MinVertTilt: -0.355
+  pullCloserHeight: 0
+  NegateHorizontal: 0
+  NegateVertical: 1
+  FOVgoal: 60
+  Speed_lerpToPositioning: 8
+  Speed_lerpToFOVgoal: 4.36

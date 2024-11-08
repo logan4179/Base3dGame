@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b43be755ba8c3141965be8966855e48, type: 3}
+  m_Name: stats_Enemy_basicFlyerA
+  m_EditorClassIdentifier: 
+  Speed_swoopng: 13
+  AcString_Flying: b_Flying
+  AcString_Running: b_Running
+  AcString_Attack: t_Attack
+  AcString_AttackChoice: i_AttackChoice
+  AcString_TakingDamage: t_TakingDamage
+  AcString_Dying: t_Dying
+  AcString_i_DamageClip: i_DamageClip
+  Attack_basicStrike:
+    AmRanged: 0
+    Reach: 1.3
+    Damage: 10
+    Force: 0
+    Likelihood: 89.3
+    AnimId: 0
+    AnimChoiceNumber: 0
+  Attack_charge:
+    AmRanged: 0
+    Reach: 0
+    Damage: 0
+    Force: 0
+    Likelihood: 0
+    AnimId: 0
+    AnimChoiceNumber: 0
