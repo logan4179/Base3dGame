@@ -250,7 +250,7 @@ public class PV_Player : PV_Player_Members
 			    independentMovementInertia, PV_Input.MoveAxisMagnitude, myStats.LerpSpeed_IndependentMoveInertia * Time.deltaTime
 			    );
 
-		    bool runCondition = !anim.GetBool(myStats.AcString_GunIsDrawn) && !GunScript_equipped.AmReloading;
+		    bool fullSpeedCondition = !anim.GetBool(myStats.AcString_GunIsDrawn) && !GunScript_equipped.AmReloading;
 
 		    if (myFootSystem.MyFootState == LFLS_FootState.Grounded && PV_Input.V_LerpedMoveAxes_calculated.magnitude > 0.05f && canMove)
 		    {
@@ -258,10 +258,10 @@ public class PV_Player : PV_Player_Members
 			    anim.SetBool(animID_AmTravelling, true);
 
 			    anim.SetFloat(
-				    paramHash_MoveSpeed_straight, PV_Input.Val_Axis_vertical_lerped * (runCondition ? 1f : 0.1f) * independentMovementInertia
+				    paramHash_MoveSpeed_straight, PV_Input.Val_Axis_vertical_lerped * (fullSpeedCondition ? 1f : 0.1f) * independentMovementInertia
 				    );
 			    anim.SetFloat(
-				    paramHash_MoveSpeed_side, PV_Input.Val_Axis_horizontal_lerped * (runCondition ? 1f : 0.1f) * independentMovementInertia
+				    paramHash_MoveSpeed_side, PV_Input.Val_Axis_horizontal_lerped * (fullSpeedCondition ? 1f : 0.1f) * independentMovementInertia
 				    );
 		    }
 		    else
@@ -273,7 +273,7 @@ public class PV_Player : PV_Player_Members
 		    }
 
 		    myFootSystem.UpdateValues(
-			    (runCondition ? myStats.moveSpeed_run : myStats.MoveSpeed_walk),
+			    (fullSpeedCondition ? myStats.moveSpeed_unfettered : myStats.MoveSpeed_fettered) * independentMovementInertia,
 			    PV_Input.Val_Axis_vertical_lerped,
 			    PV_Input.Val_Axis_horizontal_lerped,
 			    -PV_Input.Val_Axis_RHorizontal_lerped * PV_Input.LookSensitivity,

@@ -6,8 +6,11 @@ using UnityEngine;
 public class Stats_player : ScriptableObject
 {
     [Header("[----------MOVEMENT----------]")]
-    public float moveSpeed_run;
-    public float MoveSpeed_walk, rotateSpeed, jumpForce;
+    [Tooltip("This is the max speed that normal, in-game movement can be. In this case, 'normal' means that the character is not fettered by a condition like the gun being drawn, or the game slowing the character down on purpose to look at something")] 
+    public float moveSpeed_unfettered = 7f;
+    [Tooltip("This is the max speed the player can move when the game wants him to be in a 'fettered' state, such as when his gun is drawn or the game wants to slow him down to look at something")]
+    public float MoveSpeed_fettered = 2.1f;
+
     [Tooltip("Speed that the move speed multiplier gets lerped by to create gradual movement.")]
     public float LerpSpeed_IndependentMoveInertia;
 
