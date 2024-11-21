@@ -42,4 +42,7 @@ public class Stats_DebugLiving : ScriptableObject
     public Color Color_attackColliders_unarmed;
 	public Color Color_attackColliders_armed;
 
+    [Header("---------------[[ FOOT SPHERE ]]-----------------")]
+    public Color Color_footSphere;
+
 }

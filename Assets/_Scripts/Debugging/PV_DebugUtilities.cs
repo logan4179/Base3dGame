@@ -174,7 +174,7 @@ namespace PV_DebugUtils
 		private CapsuleCollider capsuleCol;
 		private MeshRenderer mr_capsuleCol;
 		private SphereCollider footSphere;
-		private MeshRenderer mr_footSphere;
+		//private MeshRenderer mr_footSphere;
         public Player_debugInfo( PV_Player plr )
         {
 			playerScript = plr;
@@ -182,11 +182,12 @@ namespace PV_DebugUtils
 			capsuleCol = trans.Find("Capsule").GetComponent<CapsuleCollider>();
 			mr_capsuleCol = capsuleCol.GetComponent<MeshRenderer>();
 			footSphere = trans.Find("FootSphere").GetComponent<SphereCollider>();
-			mr_footSphere = footSphere.GetComponent<MeshRenderer>();
+			//mr_footSphere = footSphere.GetComponent<MeshRenderer>();
         }
         public void DrawDebugVisuals( Stats_DebugLiving stats_dbgLvg )
 		{
-			Gizmos.DrawSphere( footSphere.transform.position, footSphere.radius );
+			Gizmos.color = stats_dbgLvg.Color_footSphere;
+			Gizmos.DrawSphere( footSphere.transform.position, footSphere.radius * footSphere.transform.localScale.x );
 		}
 	}
 

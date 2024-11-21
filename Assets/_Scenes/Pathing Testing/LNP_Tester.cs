@@ -12,9 +12,9 @@ public class LNP_Tester : MonoBehaviour
 
     [Header("REFERENCE")]
     public Transform Trans_Follow;
-	[SerializeField] private Transform trans_perspective;
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private FootSystem myFootSystem;
+	private SphereCollider footSystemCollider;
 
 	[Header("STATS")]
 	public Stats_base_NPC MyStats_Base_NPC;
@@ -30,18 +30,18 @@ public class LNP_Tester : MonoBehaviour
 
 	[Header("DEBUG")]
 	public string travelToDbg;
+	public bool DebugFootSphere = false;
 
 	void Awake()
 	{
 		//base.Awake();
-
+		footSystemCollider = myFootSystem.GetComponent<SphereCollider>();
 	}
 
 	void Start()
     {
         MyPath = new LNP_Path( LayerMask.GetMask("lr_EnvSolid") );
 		CreatePath();
-
     }
 
     void Update()
@@ -191,5 +191,16 @@ public class LNP_Tester : MonoBehaviour
 				PV_DebugUtilities.DrawNumberedPath( MyDebugStats, MyPath );
 			}
 		//}
+
+		if ( Application.isPlaying )
+		{
+			if ( DebugFootSphere )
+			{
+				Gizmos.color = MyDebugStats.Color_footSphere;
+				Gizmos.DrawSphere(
+					myFootSystem.transform.position, footSystemCollider.radius * myFootSystem.transform.localScale.x
+				);
+			}
+		}
 	}
 }
