@@ -34,10 +34,10 @@ public class Canvas_inGame : PV_Object
     [SerializeField] private Image _img_Weapon;
 
     [Header("Paused (Settings)")]
-    [SerializeField] private TextMeshProUGUI _txt_ControlSensitivity;
-    [SerializeField] private TextMeshProUGUI _txt_AxisLerpSpeed, _txt_SoundEffectsVolume, _txt_MusicVolume,
+    [SerializeField] private TextMeshProUGUI _txt_LookSensitivity;
+    [SerializeField] private TextMeshProUGUI _txt_LookSmoothing, _txt_SoundEffectsVolume, _txt_MusicVolume,
         _txt_MasterVolume;
-	[SerializeField] private Slider _sldr_LookSensitivity, _sldr_AxisLerpSpeed, _sldr_SoundEffectsVolume, _sldr_MusicVolume,
+	[SerializeField] private Slider _sldr_LookSensitivity, _sldr_LookSmoothing, _sldr_SoundEffectsVolume, _sldr_MusicVolume,
 	_sldr_MasterVolume;
 
 	[Header("TRUTH")]
@@ -63,9 +63,7 @@ public class Canvas_inGame : PV_Object
         Log( "Start() begin", PV_LogDestination.Hidden, PV_LogFormatting.UnityAPIMethod );
 
         GameObject_ctr_PromptText.SetActive(false);
-        _sldr_LookSensitivity.value = PV_Input.LookSensitivity;
-        //_sldr_AxisLerpSpeed.value = G.LerpSpeed_controlAxis; //old way of handling this value...
-        _sldr_AxisLerpSpeed.value = PV_Input.LookSmoothing*10f;
+        UI_ControlSlidersChangedAction(); //to make sure the UI values are initialized...
 
         _sldr_SoundEffectsVolume.value = PV_AudioManager.volume_Effects;
         _sldr_MusicVolume.value = PV_AudioManager.volume_Music;
@@ -91,9 +89,6 @@ public class Canvas_inGame : PV_Object
         PV_GameManager.Event_OnItemPickedUp.AddListener(OnItemPickedUp_action);
 
         PV_GameManager.Event_OnGunChanged.AddListener(OnGunChanged_action);
-
-        UI_ControlSlidersChangedAction();
-        UI_SoundSliders_ChangedAction();
 
         havePassedStart = true;
     }
@@ -169,18 +164,22 @@ public class Canvas_inGame : PV_Object
 
     public void UI_ControlSlidersChangedAction()
     {
-        if (!havePassedStart)
-        { return; }
-
         Log_MethodStart("UI_ControlSlidersChangedAction()", amDebuggingScript ? PV_LogDestination.Console : PV_LogDestination.Hidden, PV_LogFormatting.UserMethod);
 
-        PV_Input.LookSensitivity = Mathf.Max(1, _sldr_LookSensitivity.value);
-        _txt_ControlSensitivity.text = _sldr_LookSensitivity.value.ToString("#.##");
+        if ( havePassedStart )
+        {
+            PV_Input.LookSensitivity = Mathf.Max( 0.0001f, _sldr_LookSensitivity.value / 100f );
+            PV_Input.LookSmoothing = _sldr_LookSmoothing.value/10f;
+        }
+        else
+        {
+            print($"at this moment, sensitivity is: '{PV_Input.LookSensitivity}'. will set slider to: '{PV_Input.LookSensitivity * 100f}'");
+            _sldr_LookSensitivity.value = PV_Input.LookSensitivity * 100f;
+            _sldr_LookSmoothing.value = PV_Input.LookSmoothing * 10f;
+        }
 
-        //G.LerpSpeed_controlAxis = _sldr_AxisLerpSpeed.value; //this is the old way of just displaying the float value...
-        //G.LerpSpeed_controlAxis = G.LerpSpeed_max / _sldr_AxisLerpSpeed.value; //this is the new way of displaying the value as an intuitive "smoothing" value to the player
-        PV_Input.LookSmoothing = (_sldr_AxisLerpSpeed.value/10f);
-        _txt_AxisLerpSpeed.text = _sldr_AxisLerpSpeed.value.ToString("#.##");
+        _txt_LookSensitivity.text = _sldr_LookSensitivity.value.ToString("#.##");
+        _txt_LookSmoothing.text = _sldr_LookSmoothing.value.ToString("#.##");
     }
 
     public void Ui_ControlsMenu_BackButtonAction()

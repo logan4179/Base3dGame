@@ -276,7 +276,7 @@ public class PV_Player : PV_Player_Members
 			    (fullSpeedCondition ? myStats.moveSpeed_unfettered : myStats.MoveSpeed_fettered) * independentMovementInertia,
 			    PV_Input.Val_Axis_vertical_lerped,
 			    PV_Input.Val_Axis_horizontal_lerped,
-			    -PV_Input.Val_Axis_RHorizontal_lerped * PV_Input.LookSensitivity,
+			    -PV_Input.Val_Axis_RHorizontal_lerped * PV_Input.LookSensitivity * myStats.Speed_LookRotation,
 				PV_Utilities.FlatVect(PV_GameManager.Instance.T_Camera.forward),
 				PV_Utilities.FlatVect(PV_GameManager.Instance.T_Camera.right)
 				);
@@ -302,8 +302,8 @@ public class PV_Player : PV_Player_Members
 		    }
 
 		    PV_GameManager.Instance.M_ThirdPersonCamera.UpdateCamera(
-			    PV_Input.Val_Axis_RHorizontal_lerped * PV_Input.LookSensitivity,
-			    -PV_Input.Val_Axis_RVertical_lerped * PV_Input.LookSensitivity, Time.deltaTime
+			    PV_Input.Val_Axis_RHorizontal_lerped * PV_Input.LookSensitivity * myStats.Speed_LookRotation,
+			    -PV_Input.Val_Axis_RVertical_lerped * PV_Input.LookSensitivity * myStats.Speed_LookRotation, Time.deltaTime
 			    );
         }
 

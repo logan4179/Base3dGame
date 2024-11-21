@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d72d1d74918bd44fba385bbe0bcb0cf, type: 3}
+  m_Name: stats_base_npc_TestA
+  m_EditorClassIdentifier: 
+  Speed_Move_fast: 6.3
+  Speed_move_patrol: 1.01
+  Speed_Move_suspicious: 1.2
+  Speed_Rotate_patrol: 1.1
+  Speed_Rotate_fast: 3
+  force_Torque_regular: 0
+  force_Torque_excited: 0
+  normalPatrolRadius: 20
+  Percentage_consideredRoughlyFacing_patrolPt: 0.7
+  dist_MaxPatrolCanBeFromMyOrigin: 20
+  Duration_PatrolWait_min: 4
+  Duration_PatrolWait_max: 13
+  Duration_alertPursuit: 30
+  Dist_TriggerChasing_fromEngaging: 6
+  Percentage_consideredRoughlyFacing_threat: 0.7
+  Dist_TriggerEngaging: 1.5
+  dist_RoughlyThere: 0.3
+  AggressionLevel: 1
+  Duration_MinWaitBetweenAttacks: 2
+  Duration_ApproachWithIntentToStrike: 6
+  Duration_cd_TakingDamage: 0.5

@@ -9,7 +9,6 @@ using UnityEngine;
 public class Base_enemy : base_NPC
 {
     [Header("---------------[[ REFERENCE - INTERNAL (Base_enemy) ]]-----------------")]
-    public Stats_Base_Enemy MyStats_Base_Enemy;
    // protected NavMeshAgent nmAgent = null;
 	[SerializeField] protected List<Collider> myColliders;
 	[SerializeField] protected EnemyAttackCollider myAttackCollider;
@@ -555,7 +554,7 @@ public class Base_enemy : base_NPC
 		if ( dist_toNextPos >= distThresh && dot_facingToNextPos >= rotAngThresh )
 		{
 			travelToDbg += $"State: Moving...\n";
-			rb.MovePosition(trans.position + (v_toGoal * mvSpd * Time.fixedDeltaTime));
+			rb.MovePosition(trans.position + (mvSpd * Time.fixedDeltaTime * v_toGoal));
 			CalcSpatialValues_pathing(); //Need to recalculate after moving.
 		}
 	}
@@ -587,7 +586,7 @@ public class Base_enemy : base_NPC
 
         if (generateWait)
         {
-            cd_PatrolWait = Random.Range(MyStats_Base_Enemy.Duration_PatrolWait_min, MyStats_Base_Enemy.Duration_PatrolWait_max);
+            cd_PatrolWait = Random.Range(MyStats_Base_NPC.Duration_PatrolWait_min, MyStats_Base_NPC.Duration_PatrolWait_max);
         }
     }
 
@@ -595,27 +594,15 @@ public class Base_enemy : base_NPC
     {
         Log_MethodStart($"UpdatePath()");
 
-        if( myMovementMode == EntityMovementMode.TerrestrialMovement )
-        {
-            MyPath.CalculatePath( trans.position, v_passed, sampleMaxDistance );
-        }
-        else
-        {
-            List<Vector3> pointsReturned = area_triggering.AirspaceManager.FindPath( trans.position, v_passed );
-            Log($"airspace manager found '{pointsReturned.Count}' points. using these to calculate a PV_Path...");
-            MyPath.CalculateAirPath( pointsReturned );
-        }
-
-        calcSpatialValues(); //This will make sure it has the right values immediately...
     }
 
     public void CheckPath()
     {
-        if (!MyPath.AmOnCourse(trans.position))
+        if ( !MyPath.AmOnCourse(trans.position) )
         {
             Debug.LogWarning($"CheckPath() bug: '{name}' found off course going towards: '{MyPath.CurrentGoal}'. Dumping debug string...");
-            print(MyPath.dbgAmOnCourse);
-            UpdatePath(MyPath.EndGoal, 0.5f);
+            print( MyPath.dbgAmOnCourse );
+            UpdatePath( MyPath.EndGoal, 0.5f );
         }
     }
 	#endregion

@@ -194,8 +194,7 @@ public class DebugCanvas : MonoBehaviour
 
     public void ToggleEnvironmentDebugAction()
     {
-        PV_Environment.AmDebugging = tgl_debugEnvironment.isOn;
-        PV_Environment.Instance.DebugAction();
+        PV_SceneDebugger.Instance.Environment_debugAction( tgl_debugEnvironment.isOn );
     }
 	public void UI_TogglePlayerDebugAction()
 	{

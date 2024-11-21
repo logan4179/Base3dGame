@@ -4,15 +4,19 @@ using PV_Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LogansNavPath;
+//using pv_archived;
 
 public class base_NPC : Base_living, I_LAMS_Entity
 {
+	public Stats_base_NPC MyStats_Base_NPC;
+
 	protected FootSystem myFootSystem;
 	[SerializeField] protected Transform Trans_visionOrigin;
 
 	[Header("---------------[[ TRAVEL-TO (base_NPC) ]]-----------------")]
 	[SerializeField] protected string debugTravel;
-	public PV_Path MyPath = null;
+	public LNP_Path MyPath;
 	[SerializeField] protected List<PV_PatrolPoint> patrolPoints_cached;
 	public List<PV_PatrolPoint> PatrolPoints_cached => patrolPoints_cached;
 	protected int index_currentlySelectedPatrolPoint = -1;
@@ -53,6 +57,7 @@ public class base_NPC : Base_living, I_LAMS_Entity
 	{
 		base.Start();
 
+		MyPath = new LNP_Path(PV_Environment.Instance.Mask_EnvSolid); //todo: should this be moved into the derived classes so that they can use different masks? IE: the bug might want Mask_EnvSolid, while a typical walking enemy might want Mask_WalkableJumpable?
 		myFootSystem.mask_Walkable = PV_Environment.Instance.Mask_WalkableJumpable;
 	}
 
@@ -80,10 +85,10 @@ public class base_NPC : Base_living, I_LAMS_Entity
 	{
 		if (MyPath.AmValid)
 		{
-			v_toGoal = Vector3.Normalize(MyPath.CurrentGoal - trans.position);
-			dot_facingToNextPos = Vector3.Dot(trans.forward, v_toGoal);
-			dist_toNextPos = Vector3.Distance(trans.position, MyPath.CurrentGoal);
-			dist_toEndGoal = Vector3.Distance(trans.position, MyPath.EndGoal);
+			v_toGoal = Vector3.Normalize( MyPath.CurrentGoal - trans.position );
+			dot_facingToNextPos = Vector3.Dot( trans.forward, v_toGoal );
+			dist_toNextPos = Vector3.Distance( trans.position, MyPath.CurrentGoal );
+			dist_toEndGoal = Vector3.Distance( trans.position, MyPath.EndGoal );
 		}
 	}
 

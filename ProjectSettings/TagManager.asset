@@ -16,6 +16,7 @@ TagManager:
   - TriggerCollider
   - Enemy_basicFlyer
   - PatrolPointGrabber
+  - NavMeshOccluder
   layers:
   - Default
   - TransparentFX

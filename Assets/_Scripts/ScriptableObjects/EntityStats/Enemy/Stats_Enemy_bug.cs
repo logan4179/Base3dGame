@@ -13,8 +13,10 @@ public class Stats_Enemy_bug : ScriptableObject
     [Header("[----------ATTACKING----------]")]
     public PV_Attack Attack_basicStrike;
     public PV_Attack Attack_charge;
+	[Tooltip("Height, beyond which, this enemy will go from engaging to chasing")]
+	public float Height_TriggerChasing_fromEngaging = 2f; //todo: is this being used? Actually, I think this is so that the bug enemies can decide if they need to crawl up a ledge further to attack...
 
-    [Header("[----------ANIMATION----------]")]
+	[Header("[----------ANIMATION----------]")]
     public string AcString_Walking = "b_Walking";
     public string AcString_Running = "b_Running";
     public string AcString_Attack = "t_Attack";

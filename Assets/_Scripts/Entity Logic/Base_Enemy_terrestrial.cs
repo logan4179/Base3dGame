@@ -137,26 +137,26 @@ public class Base_Enemy_terrestrial : Base_enemy
 
 	public override void RegisterPatrolPoint( PV_PatrolPoint pt )
 	{
-		base.RegisterPatrolPoint(pt);
+		base.RegisterPatrolPoint( pt );
 
 		if ( patrolPoints_cached == null )
 		{
 			patrolPoints_cached = new List<PV_PatrolPoint>();
 		}
 
-		patrolPoints_cached.Add(pt);
+		patrolPoints_cached.Add( pt );
 
 	}
 
 	public override void CalculatePlayerVisibility( float timeMult_passed ) //public so that this can be called from the manager script a certain amount per second.
 	{
-		base.CalculatePlayerVisibility(timeMult_passed);
+		base.CalculatePlayerVisibility( timeMult_passed );
 		
 	}
 
-	public override void UpdatePath(Vector3 v_passed, float sampleMaxDistance)
+	public override void UpdatePath( Vector3 vEndPos_passed, float sampleMaxDistance )
 	{
-		MyPath.CalculatePath(trans.position, v_passed, sampleMaxDistance);
+		MyPath.CalculatePath( trans.position, vEndPos_passed, sampleMaxDistance );
 
 		calcSpatialValues(); //This will make sure it has the right values immediately...
 	}

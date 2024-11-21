@@ -1458,18 +1458,22 @@ MonoBehaviour:
   historyDebugString: 
   MyBaseStats: {fileID: 11400000, guid: c1ecbd29c6874684c99017c7a26e4e4a, type: 2}
   DBG_Alarms: 
+  MyStats_Base_NPC: {fileID: 11400000, guid: 0b2d6aee30593c4479b7c981522ead17, type: 2}
   Trans_visionOrigin: {fileID: 5283909659743633836}
   debugTravel: 
   MyPath:
+    slopeHeight_switchGravity: 0
+    dist_cornerThreshold: 0
+    threshold_cornerDotCheck: 0
     Index_currentPoint: -1
     PathPoints: []
     EndGoal: {x: 0, y: 0, z: 0}
-    dbgHistory: 
+    mask_solidEnvironment: 0
+    dbgCalculatePath: 
     dbgAmOnCourse: 
   patrolPoints_cached: []
   trans_patrolPointGrabber: {fileID: 483391884951993586}
   DBG_spatial: 
-  MyStats_Base_Enemy: {fileID: 11400000, guid: 3f95cfdf3a3dad34bbb6686a226605db, type: 2}
   myColliders:
   - {fileID: 7794341071786848100}
   - {fileID: 2901844033126216777}

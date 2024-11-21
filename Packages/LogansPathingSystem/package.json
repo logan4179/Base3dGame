@@ -1,0 +1,14 @@
+{
+  "name": "com.loganland.logansnavpath",
+  "version": "1.0.2",
+  "displayName": "Logans Nav Path",
+  "description": "Manages pathing.",
+  "documentationUrl": "https://example.com/",
+  "changelogUrl": "https://example.com/changelog.html",
+  "licensesUrl": "https://example.com/licensing.html",
+  "author": {
+    "name": "Logan Jarrett",
+    "email": "unity@example.com",
+    "url": "https://www.unity3d.com"
+  }
+}

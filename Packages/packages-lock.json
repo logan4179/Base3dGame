@@ -37,6 +37,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.loganland.logansnavpath": {
+      "version": "file:LogansPathingSystem",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.loganland.loganspoolingsystem": {
       "version": "file:LogansPoolingSystem",
       "depth": 0,

@@ -31,7 +31,7 @@ public class PV_SceneDebugger : MonoBehaviour
 	[SerializeField] private Transform trans_testDmgOnPlr;
 
 	[Header("[------ BUG ENEMIES ------]")]
-	//[SerializeField, Tooltip("Orders all enemies to go into \"debug mode\" whenever the debug toggle is triggered on the debug canvas. Only relevant in play mode")]
+	[SerializeField, Tooltip("Orders all enemies to go into \"debug mode\" whenever the debug toggle is triggered on the debug canvas. Only relevant in play mode")]
 	private bool debugAllBugEnemiesToggle = false;
 	[SerializeField, Tooltip("This is for referencing the bug manager in the inspector, which can't use the bugmanager's singleton instance, because it's static and doesn't exist in the editor")]
 	private MGR_BugEnemy BugManager_cached;
@@ -45,9 +45,11 @@ public class PV_SceneDebugger : MonoBehaviour
 	[SerializeField] private List<Enemy_basicFlyer_debugInfo> info_registeredBasicFlyerEnemies;
 
 	[Header("[------ ENVIRONMENTAL ------]")]
+	[SerializeField, Tooltip("Orders all environmentals to go into \"debug mode\" whenever the debug toggle is triggered on the debug canvas. Only relevant in play mode")]
+	private bool debugEnvironmentToggle = false;
 	[SerializeField] private PV_Environment environmentManager_cached;
-	/// <summary>Collection of sphere colliders for the debug system to emulate. Typically you'd add to this list from the sphere collider owner's script in the Start()</summary>
 	[SerializeField] private List<SphereCollider> sphereColliders_debug_pickup, sphereColliders_debug_prompt;
+	[SerializeField] private List<BoxCollider> boxColliders_debug_area;
 	public List<ReverbFollower> reverbFollowers = new List<ReverbFollower>();
 	public List<ReverbZoneManager> reverbZoneManagers = new List<ReverbZoneManager>();
 
@@ -211,6 +213,7 @@ public class PV_SceneDebugger : MonoBehaviour
 
 	}
 
+	#region ENVIRONMENT---------------------------------------------
 	[ContextMenu("z call FetchEnvironmentals()")]
 	public void FetchEnvironmentals()
 	{
@@ -222,9 +225,18 @@ public class PV_SceneDebugger : MonoBehaviour
 		{
 			sphereColliders_debug_pickup = PV_Utilities.GetComponentsWithTag_inScene<SphereCollider>("Pickup");
 			sphereColliders_debug_prompt = PV_Utilities.GetComponentsWithTag_inScene<SphereCollider>("Prompt");
+
+			boxColliders_debug_area = PV_Utilities.GetComponentsWithTag_inScene<BoxCollider>("PV_Area");
 			Debug.Log($"Found '{sphereColliders_debug_pickup.Count}' pickups, and '{sphereColliders_debug_prompt.Count}' prompts");
 		}
 	}
+
+	public void Environment_debugAction(bool tglVAl)
+	{
+		Debug.Log($"{nameof(Environment_debugAction)}({tglVAl})");
+		debugEnvironmentToggle = tglVAl;
+	}
+	#endregion
 
 	public void Player_DebugAction(bool tglVal)
 	{
@@ -288,54 +300,59 @@ public class PV_SceneDebugger : MonoBehaviour
 			}
 		}
 
-		if (Application.isPlaying)
+		if ( Application.isPlaying )
 		{
-			if (PV_Environment.AmDebugging)
+			if ( debugEnvironmentToggle )
 			{
-				if (sphereColliders_debug_pickup != null && sphereColliders_debug_pickup.Count > 0)
+				if ( sphereColliders_debug_pickup != null && sphereColliders_debug_pickup.Count > 0 )
 				{
 					Gizmos.color = MyStats.Color_PickupObjectCollider_debug;
-					foreach (SphereCollider sc in sphereColliders_debug_pickup)
+					foreach ( SphereCollider sc in sphereColliders_debug_pickup )
 					{
-						Gizmos.DrawSphere(sc.transform.position, sc.radius);
+						Gizmos.DrawSphere( sc.transform.position, sc.radius );
 					}
 				}
 
-
-				if (sphereColliders_debug_prompt != null && sphereColliders_debug_prompt.Count > 0)
+				if ( sphereColliders_debug_prompt != null && sphereColliders_debug_prompt.Count > 0 )
 				{
 					Gizmos.color = MyStats.Color_PromptObjectCollider_debug;
-					foreach (SphereCollider sc in sphereColliders_debug_prompt)
+					foreach ( SphereCollider sc in sphereColliders_debug_prompt )
 					{
-						Gizmos.DrawSphere(sc.transform.position, sc.radius);
+						Gizmos.DrawSphere( sc.transform.position, sc.radius );
 					}
 				}
 
-
-				if (reverbFollowers != null && reverbFollowers.Count > 0)
+				if ( reverbFollowers != null && reverbFollowers.Count > 0 )
 				{
 					Gizmos.color = MyStats.Color_ReverbZone_debug;
 
-
-					foreach (ReverbFollower rf in reverbFollowers)
+					foreach ( ReverbFollower rf in reverbFollowers )
 					{
 						rf.DrawDebugVisuals();
 					}
 				}
 
-
-				if (reverbZoneManagers != null && reverbZoneManagers.Count > 0)
+				if ( reverbZoneManagers != null && reverbZoneManagers.Count > 0 )
 				{
 					Gizmos.color = MyStats.Color_ReverbZone_debug;
 
-
-					foreach (ReverbZoneManager rzm in reverbZoneManagers)
+					foreach ( ReverbZoneManager rzm in reverbZoneManagers )
 					{
 						//rzm.DrawDebugVisuals(); //todo...
 					}
 				}
 
-
+				if ( boxColliders_debug_area != null && boxColliders_debug_area.Count > 0 )
+				{
+					Gizmos.color = MyStats.Color_AreaTrigger_debug;
+					foreach ( BoxCollider bc in boxColliders_debug_area )
+					{
+						Gizmos.DrawCube( 
+							bc.transform.position, 
+							new Vector3(bc.size.x * bc.transform.localScale.x, bc.size.y * bc.transform.localScale.y, bc.size.z * bc.transform.localScale.z)
+							);
+					}
+				}
 			}
 
 

@@ -78,9 +78,6 @@ public class PV_Environment : PV_Object
 	/// <summary>Mask for all living entities.</summary>
 	public int Mask_Living;
 
-	[Header("----------DEBUG---------")]
-    public static bool AmDebugging = false;
-
 
     private void Awake()
     {
@@ -93,7 +90,6 @@ public class PV_Environment : PV_Object
         {
             PV_Debug.LogError($"VERTIGO ERROR! Environment manager instance was not set to null on Awake. Is there more than one in the scene?");
         }
-
     }
 
     void Start()
@@ -177,18 +173,5 @@ public class PV_Environment : PV_Object
 		print(sb);
 
 		return nextPt;
-    }
-
-    public void DebugAction()
-    {
-        print("pv_Environment.DebugAction()");
-
-        if( Areas_active != null )
-        {
-            foreach( LAMS_Area area in AllAreas )
-            {
-               // area.DebugAction();
-            }
-        }
     }
 }

@@ -114,7 +114,7 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
                 SwitchState( EnemyActionState.Patrolling );
             }
 
-            if ( dist_toPlayer < MyStats_Base_Enemy.Dist_TriggerEngaging )
+            if ( dist_toPlayer < MyStats_Base_NPC.Dist_TriggerEngaging )
             {
                 SwitchState( EnemyActionState.Engaging );
             }
@@ -122,7 +122,7 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
         else if (myActionState == EnemyActionState.Engaging )
         {
             //if (!plrVisible || distToPlayer > dist_consideredEngaging)
-            if ( dist_toPlayer > MyStats_Base_Enemy.Dist_TriggerChasing_fromEngaging )
+            if ( dist_toPlayer > MyStats_Base_NPC.Dist_TriggerChasing_fromEngaging )
             {
                 SwitchState( EnemyActionState.Chasing );
             }
@@ -141,9 +141,9 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
         {
             if ( cd_PatrolWait <= 0f )
             {
-                TravelToGoal( MyStats_Base_Enemy.dist_RoughlyThere );
+                TravelToGoal( MyStats_Base_NPC.dist_RoughlyThere );
 
-                if ( dist_toEndGoal <= MyStats_Base_Enemy.dist_RoughlyThere )
+                if ( dist_toEndGoal <= MyStats_Base_NPC.dist_RoughlyThere )
                 {
                     Log( $"Bug enemy has reached end goal of: '{MyPath.EndGoal}', and is negotiating a patrol wait state..." );
                     GenerateNewPath();
@@ -154,19 +154,19 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
         }
         else if ( myActionState == EnemyActionState.CaughtAGlimpse )
         {
-            LookToward( MyPath.EndGoal, Vector3.up, MyStats_Base_Enemy.Speed_Rotate_fast );
+            LookToward( MyPath.EndGoal, Vector3.up, MyStats_Base_NPC.Speed_Rotate_fast );
         }
         else if ( myActionState == EnemyActionState.Suspicious )
         {
-            TravelToGoal( MyStats_Base_Enemy.dist_RoughlyThere );
+            TravelToGoal( MyStats_Base_NPC.dist_RoughlyThere );
         }
         else if ( myActionState == EnemyActionState.Chasing )
         {
-            TravelToGoal( MyStats_Base_Enemy.dist_RoughlyThere );
+            TravelToGoal( MyStats_Base_NPC.dist_RoughlyThere );
         }
         else if ( myActionState == EnemyActionState.Engaging )
         {
-            TravelToGoal( MyStats_Base_Enemy.Dist_TriggerChasing_fromEngaging );
+            TravelToGoal( MyStats_Base_NPC.Dist_TriggerChasing_fromEngaging );
 
         }
         else if ( myActionState == EnemyActionState.ApproachingToStrike )
@@ -174,7 +174,7 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
             TravelToGoal( loadedAttack.Reach );
             if( myCurrentAction == Actions_BasicFlyer.BasicStrike )
             {
-                if( dist_toPlayer < MyStats.Attack_basicStrike.Reach && dot_facingToPlayer > MyStats_Base_Enemy.Percentage_consideredRoughlyFacing_threat )
+                if( dist_toPlayer < MyStats.Attack_basicStrike.Reach && dot_facingToPlayer > MyStats_Base_NPC.Percentage_consideredRoughlyFacing_threat )
                 {
                     Attack();
                 }
@@ -283,21 +283,21 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
 		travelToDbg = string.Empty;
 
 		#region CALCULATIONS-------------------------------------------------------------
-		float mvSpd = MyStats_Base_Enemy.Speed_move_patrol;
-		float rtSpd = MyStats_Base_Enemy.Speed_Rotate_patrol;
-		float calculatedDistanceThresh = MyStats_Base_Enemy.dist_RoughlyThere;
-		float calculatedAngleThresh = MyStats_Base_Enemy.Percentage_consideredRoughlyFacing_patrolPt;
+		float mvSpd = MyStats_Base_NPC.Speed_move_patrol;
+		float rtSpd = MyStats_Base_NPC.Speed_Rotate_patrol;
+		float calculatedDistanceThresh = MyStats_Base_NPC.dist_RoughlyThere;
+		float calculatedAngleThresh = MyStats_Base_NPC.Percentage_consideredRoughlyFacing_patrolPt;
 
 		bool movementShouldBeFast = false; //For Moving and Rotation
 		if (myActionState == EnemyActionState.Chasing || myActionState == EnemyActionState.Engaging || myActionState == EnemyActionState.ApproachingToStrike)
 		{
 			movementShouldBeFast = true;
-			mvSpd = MyStats_Base_Enemy.Speed_Move_fast;
-			rtSpd = MyStats_Base_Enemy.Speed_Rotate_fast;
+			mvSpd = MyStats_Base_NPC.Speed_Move_fast;
+			rtSpd = MyStats_Base_NPC.Speed_Rotate_fast;
 			if (MyPath.AmOnEndGoal)
 			{
 				calculatedDistanceThresh = endGoalDistThresh;
-				calculatedAngleThresh = MyStats_Base_Enemy.Percentage_consideredRoughlyFacing_threat;
+				calculatedAngleThresh = MyStats_Base_NPC.Percentage_consideredRoughlyFacing_threat;
 			}
 		}
 		#endregion
@@ -352,13 +352,13 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
 			{
 				// Turn on/off gravity before incrementing index
 				Log($"TravelPath() is finding new point. Index_currentPoint: '{MyPath.Index_currentPoint}', current length: '{MyPath.PathPoints.Count}'. " +
-					$"TurnOnGravity: '{MyPath.CurrentPathPoint.TurnOnGravity}', TurnOffGravity: '{MyPath.CurrentPathPoint.TurnOffGravity}'");
-				if (MyPath.CurrentPathPoint.TurnOnGravity)
+					$"TurnOnGravity: '{MyPath.CurrentPathPoint.flag_switchGravityOn}', TurnOffGravity: '{MyPath.CurrentPathPoint.flag_switchGravityOff}'");
+				if (MyPath.CurrentPathPoint.flag_switchGravityOn)
 				{
 					//Debug.LogWarning($"turning on gravity for: '{name}'");
 					rb.useGravity = true;
 				}
-				else if (MyPath.CurrentPathPoint.TurnOffGravity)
+				else if (MyPath.CurrentPathPoint.flag_switchGravityOff )
 				{
 					//Debug.LogWarning($"turning off gravity for: '{name}'");
 
@@ -408,13 +408,13 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
 			}
 
 			myActionState = EnemyActionState.Chasing;
-			cd_Alert = MyStats_Base_Enemy.Duration_alertPursuit;
+			cd_Alert = MyStats_Base_NPC.Duration_alertPursuit;
 		}
 		else if (state_passed == EnemyActionState.Engaging)
 		{
 			myActionState = EnemyActionState.Engaging;
 			MGR_BugEnemy.numbEngaging++;
-			cuTimeSinceLastStrike = MyStats_Base_Enemy.Duration_MinWaitBetweenAttacks;
+			cuTimeSinceLastStrike = MyStats_Base_NPC.Duration_MinWaitBetweenAttacks;
 		}
 		else if (state_passed == EnemyActionState.ApproachingToStrike)
 		{
@@ -441,7 +441,7 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
 				/////////--------GENERATE "LIKELIHOOD VALUES------------------------/////////////
 				// ATTACK--------
 				float likelihood_attack_calculated = 0f;
-				if (dot_facingToPlayer > MyStats_Base_Enemy.Percentage_consideredRoughlyFacing_threat && cuTimeSinceLastStrike > MyStats_Base_Enemy.Duration_MinWaitBetweenAttacks) //Bare minimum to attack
+				if (dot_facingToPlayer > MyStats_Base_NPC.Percentage_consideredRoughlyFacing_threat && cuTimeSinceLastStrike > MyStats_Base_NPC.Duration_MinWaitBetweenAttacks) //Bare minimum to attack
 				{//TODO: if enemy gets too close to player, he won't do anything, and it seems because of the above check 'angToPlrAbs < roughlyFacing*2f', angToPlrAbs evaluates to too large
 					dbgDecideNextAction += "bare minimum conditions for attack met...\n";
 					if (cd_AggressionBuild < 7f) //The idea here is that this value will only count up to 7
@@ -467,9 +467,9 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
 				/////////////////-------------GENERATE DECISION----------------------///////////////
 				float myNextMove = Random.Range(0f, 100f); //Decides random variable representing next move
 				dbgDecideNextAction += $"{nameof(myNextMove)}: '{myNextMove}'\n";
-				dbgDecideNextAction += $"{nameof(MyStats_Base_Enemy.AggressionLevel)}: '{MyStats_Base_Enemy.AggressionLevel}'\n";
+				dbgDecideNextAction += $"{nameof(MyStats_Base_NPC.AggressionLevel)}: '{MyStats_Base_NPC.AggressionLevel}'\n";
 
-				if (myNextMove <= (MyStats_Base_Enemy.AggressionLevel + likelihood_attack_calculated))
+				if (myNextMove <= (MyStats_Base_NPC.AggressionLevel + likelihood_attack_calculated))
 				{
 
 					//float attackChoice = Random.Range(0f, 100f); //this will be implemented when there are multiple attacks.
@@ -479,7 +479,7 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
 					loadedAttack = MyStats.Attack_basicStrike;
 					SwitchState(EnemyActionState.ApproachingToStrike);
 					myCurrentAction = Actions_BasicFlyer.BasicStrike;
-					cd_ApproachingPlayerBeforeStriking = MyStats_Base_Enemy.Duration_ApproachWithIntentToStrike;
+					cd_ApproachingPlayerBeforeStriking = MyStats_Base_NPC.Duration_ApproachWithIntentToStrike;
 
 					Log($"{name} Initiating '{myCurrentAction}' attack...");
 
@@ -537,7 +537,7 @@ public class Enemy_BasicFlyer : Base_Enemy_airborn
 			anim.SetTrigger(animID_TakingDamage);
 			flag_amInTotallyPreoccupyingAnimation = true;
 
-			cd_takingDamage = MyStats_Base_Enemy.Duration_cd_TakingDamage;
+			cd_takingDamage = MyStats_Base_NPC.Duration_cd_TakingDamage;
 			if (myActionState < EnemyActionState.Chasing && !canSeePlayer) //If we were hit without being aware of the player...
 			{
 				SwitchState(EnemyActionState.Suspicious);

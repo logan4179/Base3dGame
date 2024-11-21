@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using LogansNavPath;
+//using pv_archived;
 
 namespace PV_DebugUtils
 {
@@ -29,7 +31,7 @@ namespace PV_DebugUtils
 				if (i < path_passed.Length - 1)
 				{
 					Vector3 vToNext = path_passed[i + 1] - path_passed[i];
-					Handles.ConeHandleCap(0, path_passed[i], Quaternion.LookRotation(vToNext, Vector3.up), stats_dbgLvg.Size_PatrolArrow, EventType.Repaint);
+					Handles.ConeHandleCap(0, path_passed[i], Quaternion.LookRotation(vToNext, Vector3.up), stats_dbgLvg.Size_PatrolPointNextArrow, EventType.Repaint);
 					Handles.DrawDottedLine(path_passed[i] + (Vector3.up * 0.1f), path_passed[i + 1] + (Vector3.up * 0.1f), stats_dbgLvg.Size_DottedLine);
 				}
 
@@ -42,14 +44,101 @@ namespace PV_DebugUtils
 
 		}
 
-		public static void DrawNumberedPath( Stats_DebugLiving stats_dbgLvg, PV_Path path_passed )
+		public static void DrawNumberedPath( Stats_DebugLiving stats_dbgLvg, LNP_Path path_passed )
 		{
-			if (!path_passed.AmValid)
+			if ( !path_passed.AmValid )
 			{
 				return;
 			}
 
-			DrawNumberedPath( stats_dbgLvg, path_passed.GetPath() );
+			Handles.color = stats_dbgLvg.Color_PathPt;
+
+			for ( int i = 0; i < path_passed.PathPoints.Count; i++ )
+			{
+				LNP_PathPoint pt = path_passed.PathPoints[i];
+
+				//Handles.DrawLine( path_passed[i], path_passed[i]+Vector3.up * 5f, MyStats.Size_PathLineWidth );
+
+				if( path_passed.Index_currentPoint == i ) //Highlight current patrol pt
+				{
+					Handles.color = stats_dbgLvg.Color_PatrolPt_highlighted;
+
+					Handles.DrawLine(
+						pt.V_point,
+						pt.V_point + (pt.V_normal * stats_dbgLvg.Height_PathVerticalLine * 5f),
+						stats_dbgLvg.Width_PathVerticalLine
+					);
+
+					Handles.color = Color.white;
+				}
+				else
+				{
+					Handles.DrawLine(
+						pt.V_point,
+						pt.V_point + (pt.V_normal * stats_dbgLvg.Height_PathVerticalLine), 
+						stats_dbgLvg.Width_PathVerticalLine
+					);
+				}
+
+
+				Handles.Label(
+					pt.V_point + (pt.V_normal * stats_dbgLvg.Height_PathVerticalLine * 1.1f), 
+					$"{i}\n  {pt.V_point}"
+				);
+
+				GUIStyle gstlPtIssue = new GUIStyle();
+				gstlPtIssue.fontSize = 16;
+				gstlPtIssue.fontStyle = FontStyle.Bold;
+				gstlPtIssue.normal.textColor = Color.red;
+
+				if ( i < path_passed.PathPoints.Count - 1 )
+				{
+					Gizmos.color = new Color(0.05f, 1f, 0f);
+					Gizmos.DrawSphere( pt.V_point, 0.01f );
+
+					if ( pt.V_toNext != Vector3.zero ) //issue with v_toNext...
+					{
+						Handles.color = Color.blue;
+						Handles.ArrowHandleCap(
+							0, pt.V_point,
+							Quaternion.LookRotation(pt.V_toNext, Vector3.up),
+							stats_dbgLvg.Size_PatrolPointNextArrow, EventType.Repaint
+						);
+						Handles.color = stats_dbgLvg.Color_PathPt;
+					}
+					else
+					{
+						//Handles.ArrowHandleCap()
+						Gizmos.color = stats_dbgLvg.Color_patrolPointIssue;
+
+						Handles.Label(pt.V_point, $"?", gstlPtIssue);
+						//Handles.color = stats_dbgLvg.Color_PathPt;
+						Gizmos.color = Color.white;
+					}
+
+					Handles.DrawDottedLine(
+						pt.V_point,
+						path_passed.PathPoints[i + 1].V_point,
+						stats_dbgLvg.Size_DottedLine
+					);
+				}
+
+				if( pt.flag_switchGravityOff )
+				{
+					Handles.Label( pt.V_point + (Vector3.up *  0.02f), "grav OFF" );
+				}
+				else if( pt.flag_switchGravityOn )
+				{
+					Handles.Label(pt.V_point + (Vector3.up * 0.02f), "grav ON");
+				}
+
+				if (i > 0)
+				{
+					//Handles.ConeHandleCap( 0, path_passed[i] + (Vector3.up*stats_passed.VerticalOffset_PathCones), 
+					//Quaternion.LookRotation(Vector3.down), stats_passed.Size_PathCones, EventType.Repaint);
+				}
+			}
+
 		}
 
 		public static void DrawVisonIndicator(Transform trans, Stats_DebugLiving stats_dbgLvg, float dist, bool canSeeTarget, EnemyActionState enemyState, float dotThreshold)
@@ -116,7 +205,7 @@ namespace PV_DebugUtils
 		{
 			if ( Application.isPlaying )
 			{
-				if ( BaseEnemyReference.MyPath != null && BaseEnemyReference.MyPath.PathPoints != null && BaseEnemyReference.MyPath.PathPoints.Count > 0 )
+				if ( BaseEnemyReference.MyPath.AmValid )
 				{
 					PV_DebugUtilities.DrawNumberedPath(stats_dbgLvg, BaseEnemyReference.MyPath);
 				}

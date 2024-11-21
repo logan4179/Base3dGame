@@ -16,6 +16,7 @@ MonoBehaviour:
   Color_PromptObjectCollider_debug: {r: 0, g: 0, b: 1, a: 0.43137255}
   Color_ReverbFollower_debug: {r: 0.6792453, g: 0.30373797, b: 0.30373797, a: 0.18431373}
   Color_ReverbZone_debug: {r: 0, g: 1, b: 0.50980395, a: 0.09803922}
+  Color_AreaTrigger_debug: {r: 0.19569243, g: 0.4339623, b: 0.19569243, a: 0.3254902}
   Color_airpointCreatorLine: {r: 0, g: 1, b: 0.96541667, a: 1}
   Color_airpointCreatorSphere: {r: 1, g: 0, b: 0, a: 0.41960785}
   Radius_airpointCreatorSphere: 1.5

@@ -127,4 +127,15 @@ public class DataManger : PV_Object
         PlayerPrefs.SetFloat("VERTIGO_LOOKSMOOTHING", val_passed);
     }
     #endregion
+
+    #region EDITOR HELPERS --------------------------------
+    [ContextMenu("z call SayControlPrefs")]
+    public void SayControlPrefs()
+    {
+        Debug.Log($"{nameof(SayControlPrefs)}()...");
+
+        Debug.Log($"{nameof(GetLookSensitivityPref)}(): '{GetLookSensitivityPref()}'\n" +
+            $"{nameof(GetLookSmoothing)}(): '{GetLookSmoothing()}'\n");
+    }
+	#endregion
 }

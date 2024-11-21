@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4430c900aca40cf489202a535a12dd8b, type: 3}
   m_Name: stats_playerA
   m_EditorClassIdentifier: 
-  moveSpeed_run: 7
-  MoveSpeed_walk: 2.1
-  rotateSpeed: 0
-  jumpForce: 0
+  moveSpeed_unfettered: 7
+  MoveSpeed_fettered: 2.1
+  Speed_LookRotation: 15
   LerpSpeed_IndependentMoveInertia: 10000
   visLerpSpeed: 5
   AcString_GunIsDrawn: b_GunIsDrawn
