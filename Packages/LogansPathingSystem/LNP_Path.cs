@@ -128,6 +128,8 @@ namespace LogansNavPath
                 Debug.LogWarning($"Navmesh.CalculatePath() returned false. startPos: '{startPos_passed}', endPos: '{endPos_passed}', sampleMaxDistance: '{sampleMaxDistance}'.."); //todo: this is getting triggered occasionally...
                 return false; //todo: returning a boolean is newly added. Make sure this return boolean is being properly used...
 			}
+
+			Debug.Log($"path status: '{nmpath.status}'");
 			#endregion
 
 			EndGoal = nmpath.corners[nmpath.corners.Length - 1]; //when the above check returns false, this was causing an error to log on this line back before I started returning on false check...
@@ -150,9 +152,10 @@ namespace LogansNavPath
                     LNP_PathPoint afterPt = new LNP_PathPoint( nmpath.corners[i + 1], mask_solidEnvironment );
                     LNP_PathPoint crnrPt = new LNP_PathPoint( pt, afterPt );
 
-                    pt.SetSpatialValues(slopeHeight_switchGravity, crnrPt);
+
+                    /*pt.SetSpatialValues(slopeHeight_switchGravity, crnrPt);
                     crnrPt.SetSpatialValues(pt, slopeHeight_switchGravity, afterPt);
-                    afterPt.SetSpatialValues(crnrPt, slopeHeight_switchGravity);
+                    afterPt.SetSpatialValues(crnrPt, slopeHeight_switchGravity);*/
 
                     PathPoints.Add( pt );
 					PathPoints.Add( crnrPt );
@@ -184,12 +187,12 @@ namespace LogansNavPath
                 {
 					calculatedPt.SetSpatialValues(PathPoints[i - 1], slopeHeight_switchGravity, PathPoints[i + 1]);
 
-                    if( calculatedPt.Flag_amCorner ) //this correction block needs to be done in order for the previous point to have the correct nextPt vector...
+                    /*if( calculatedPt.Flag_amCorner ) //this correction block needs to be done in order for the previous point to have the correct nextPt vector...
                     {
                         LNP_PathPoint PreviousPoint = PathPoints[i - 1];
                         PreviousPoint.SetMyNextPoint( calculatedPt.V_point );
                         PathPoints[i - 1] = PreviousPoint;
-                    }
+                    }*/
                 }
 
                 PathPoints[i] = calculatedPt;

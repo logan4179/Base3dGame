@@ -173,8 +173,9 @@ namespace PV_DebugUtils
 		private Transform trans;
 		private CapsuleCollider capsuleCol;
 		private MeshRenderer mr_capsuleCol;
-		private SphereCollider footSphere;
-		//private MeshRenderer mr_footSphere;
+		public SphereCollider footSphere;
+		public FootSystem myFootSystem;
+
         public Player_debugInfo( PV_Player plr )
         {
 			playerScript = plr;
@@ -182,11 +183,23 @@ namespace PV_DebugUtils
 			capsuleCol = trans.Find("Capsule").GetComponent<CapsuleCollider>();
 			mr_capsuleCol = capsuleCol.GetComponent<MeshRenderer>();
 			footSphere = trans.Find("FootSphere").GetComponent<SphereCollider>();
-			//mr_footSphere = footSphere.GetComponent<MeshRenderer>();
+			myFootSystem = footSphere.GetComponent<FootSystem>();
         }
         public void DrawDebugVisuals( Stats_DebugLiving stats_dbgLvg )
 		{
-			Gizmos.color = stats_dbgLvg.Color_footSphere;
+			if ( myFootSystem.MyFootState == LFLS_FootState.Grounded ) 
+			{
+				Gizmos.color = stats_dbgLvg.Color_footSphere_grounded;
+			}
+			else if ( myFootSystem.MyFootState == LFLS_FootState.Sliding )
+			{
+				Gizmos.color = stats_dbgLvg.Color_footSphere_sliding;
+			}
+			else if ( myFootSystem.MyFootState == LFLS_FootState.Airborn )
+			{
+				Gizmos.color = stats_dbgLvg.Color_footSphere_airborn;
+			}
+
 			Gizmos.DrawSphere( footSphere.transform.position, footSphere.radius * footSphere.transform.localScale.x );
 		}
 	}

@@ -110,7 +110,11 @@ namespace LogansNavPath
         {
 			Flag_amCorner = true;
 
-			V_point = ptBefore.V_point + Vector3.Project( ptAFter.V_point - ptBefore.V_point, ptBefore.V_toPrev ); //
+			//V_point = ptBefore.V_point + Vector3.Project( ptAFter.V_point - ptBefore.V_point, ptBefore.V_toPrev ); //
+			//V_point = ptBefore.V_point + Vector3.ProjectOnPlane( ptAFter.V_point, ptBefore.V_normal ).normalized;
+			V_point = ptBefore.V_point + Vector3.ProjectOnPlane( (ptAFter.V_point - ptBefore.V_point), ptBefore.V_normal );
+
+			//Debug.Log($"add '{Vector3.ProjectOnPlane(ptAFter.V_point, ptBefore.V_normal).normalized}'");
 
 			V_normal = ptBefore.V_normal;
 
@@ -162,11 +166,11 @@ namespace LogansNavPath
 		public void SetSpatialValues( LNP_PathPoint ptBefore, float slopeHeight_switchGravity, LNP_PathPoint ptAfter )
 		{
 			DebugClass += $"SetSpatialValues( before: '{ptBefore.V_point}', after: '{ptAfter.V_point}')\n";
-			if( Flag_amCorner )
+			/*if( Flag_amCorner )
 			{
 				DebugClass += $"found am corner...\n";
 				V_point = ptBefore.V_point + Vector3.Project(ptAfter.V_point - ptBefore.V_point, ptBefore.V_toPrev); //
-			}
+			}*/
 
 			SetPreviousAndNextPoints( ptBefore.V_point, ptAfter.V_point );
 

@@ -60,7 +60,7 @@ public class PV_Player : PV_Player_Members
 
 		// EVENTS ---------------------------------------------
         PV_GameManager.Event_OnHorizontalDpadPressed.AddListener( CycleWeapon );
-		myFootSystem.mask_Walkable = PV_Environment.Instance.Mask_WalkableJumpable;
+		myFootSystem.Mask_Walkable = PV_Environment.Instance.Mask_WalkableJumpable;
 
 		InitState();
 

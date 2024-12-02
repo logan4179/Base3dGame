@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Height_PathVerticalLine: 0.15
   Width_PathVerticalLine: 4.08
-  Size_DottedLine: 7.62
+  Size_DottedLine: 6.09
   Color_PathPt: {r: 0.54899323, g: 0.6226415, b: 0.46051973, a: 0.48235294}
   Size_PatrolPointNextArrow: 0.123
   Color_patrolPointGrabber: {r: 1, g: 0.9677758, b: 0, a: 0.5686275}
@@ -25,4 +25,6 @@ MonoBehaviour:
   Color_VisionIndicatorLines: {r: 0, g: 1, b: 0.92253375, a: 0.14117648}
   Color_attackColliders_unarmed: {r: 0, g: 0.8691776, b: 0.75686276, a: 0.13725491}
   Color_attackColliders_armed: {r: 1, g: 0, b: 0, a: 0.7372549}
-  Color_footSphere: {r: 1, g: 0, b: 0.7723522, a: 0.50980395}
+  Color_footSphere_grounded: {r: 0.11265004, g: 1, b: 0, a: 0.64705884}
+  Color_footSphere_sliding: {r: 0.9646715, g: 1, b: 0, a: 0.5019608}
+  Color_footSphere_airborn: {r: 1, g: 0, b: 0, a: 0.5019608}

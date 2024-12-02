@@ -58,7 +58,7 @@ public class base_NPC : Base_living, I_LAMS_Entity
 		base.Start();
 
 		MyPath = new LNP_Path(PV_Environment.Instance.Mask_EnvSolid); //todo: should this be moved into the derived classes so that they can use different masks? IE: the bug might want Mask_EnvSolid, while a typical walking enemy might want Mask_WalkableJumpable?
-		myFootSystem.mask_Walkable = PV_Environment.Instance.Mask_WalkableJumpable;
+		myFootSystem.Mask_Walkable = PV_Environment.Instance.Mask_WalkableJumpable;
 	}
 
 	protected override void MoveAlarms()
