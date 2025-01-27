@@ -116,20 +116,28 @@ namespace PV_DebugUtils
 						Gizmos.color = Color.white;
 					}
 
+					Handles.color = stats_dbgLvg.Color_PathLines;
 					Handles.DrawDottedLine(
 						pt.V_point,
 						path_passed.PathPoints[i + 1].V_point,
 						stats_dbgLvg.Size_DottedLine
 					);
+
+					if (path_passed.PathPoints[i + 1].V_point == pt.V_point)
+					{
+						Vector3 endLinePos = pt.V_point + (Vector3.up * 1.5f) + (Vector3.right * 0.5f) + (Vector3.forward * 0.5f);
+						Gizmos.DrawLine(pt.V_point, endLinePos);
+						Handles.Label(endLinePos, $"{i} and {i+1} are the same");
+					}
 				}
 
 				if( pt.flag_switchGravityOff )
 				{
-					Handles.Label( pt.V_point + (Vector3.up *  0.02f), "grav OFF" );
+					Handles.Label( pt.V_point + (Vector3.up *  0.02f), "G OFF" );
 				}
 				else if( pt.flag_switchGravityOn )
 				{
-					Handles.Label(pt.V_point + (Vector3.up * 0.02f), "grav ON");
+					Handles.Label(pt.V_point + (Vector3.up * 0.02f), "G ON");
 				}
 
 				if (i > 0)

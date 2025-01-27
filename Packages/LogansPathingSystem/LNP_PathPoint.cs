@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Android;
 
 namespace LogansNavPath
 {
     [Serializable]
-    public struct LNP_PathPoint
+    public class LNP_PathPoint
     {
         
         public Vector3 V_point;
@@ -26,7 +27,9 @@ namespace LogansNavPath
 
         
         /// <summary>The distance to the next patrol point.</summary>
-        //public float Dist_toNext; //todo: dws
+        public float Dist_toNext = -1f;
+
+		public float Dist_toPrev = -1f;
         
 
         [HideInInspector] public bool AmEndPoint; //todo: dws?
@@ -43,6 +46,8 @@ namespace LogansNavPath
 
 			V_toNext = Vector3.zero;
 			V_toPrev = Vector3.zero;
+			Dist_toNext = -1;
+			Dist_toPrev = -1;
 			AmEndPoint = false;
 
 			flag_switchGravityOn = false;
@@ -54,6 +59,7 @@ namespace LogansNavPath
 
 		public LNP_PathPoint( Vector3 pt, int mask_passed )
 		{
+			DebugClass = $"constructing at pt: '{pt}'...\n";
 			AmEndPoint = false;
 
 			flag_switchGravityOn = false;
@@ -64,41 +70,33 @@ namespace LogansNavPath
 			V_point = pt;
 			V_toNext = Vector3.zero;
 			V_toPrev = Vector3.zero;
-
-			DebugClass = string.Empty;
+			Dist_toNext = -1;
+			Dist_toPrev = -1;
 
 			#region GENERATE NORMALS-----------------------------------------------------------------
 			RaycastHit rcHit;
 			DebugClass += "Normal check---------------------------\n";
 
 			Collider[] hitColliders = Physics.OverlapSphere( V_point, 0.2f, mask_passed, QueryTriggerInteraction.Ignore );
-			if ( hitColliders != null )
+			if ( hitColliders.Length > 0 ) //Note: I don't have to check if it's null here, bc it will never be null bc of the line above
 			{
 				DebugClass += $"Phusics.OverlapSphere succesful. closest: '{hitColliders[0].ClosestPoint(V_point)}'..\n";
-				if ( hitColliders.Length > 0 )
-				{
-					//V_point = hitColliders[0].ClosestPoint( V_point );//this didn't do anything...
 
-					if ( LNPS_Utils.CrossCast(V_point, 0.15f, out rcHit, mask_passed, QueryTriggerInteraction.Ignore) )
-					//if ( LNPS_Utils.CrossCast(V_point, hitColliders[0].ClosestPoint(V_point), 0.05f, out rcHit, mask_passed, QueryTriggerInteraction.Ignore) ) //doesn't work on some points because the first two parameters end up being the same...
-					{
-						DebugClass += ($"crosscast succesful, object hit: '{rcHit.transform.name}' normal: '{rcHit.normal}'\n");
-						V_normal = rcHit.normal;
-						V_point = hitColliders[0].ClosestPoint( V_point + V_normal );
-					}
-					else
-					{
-						DebugClass += ($"crosscast Not succesful.~~~~~~~~~~~XXXXXXXXX\n");
-					}
+				if ( LNPS_Utils.CrossCast(V_point, 0.15f, out rcHit, mask_passed, QueryTriggerInteraction.Ignore) )
+				{
+					DebugClass += ($"crosscast succesful, object hit: '{rcHit.transform.name}', crosscast hit at: '{rcHit.point}' normal: '{rcHit.normal}'\n");
+					V_normal = rcHit.normal;
+					V_point = hitColliders[0].ClosestPoint( V_point + V_normal );
+					DebugClass += $"closest point was: '{V_point}'\n";
 				}
 				else
 				{
-					DebugClass += ($"hitcolliders length was: '{hitColliders.Length}'~~~~~~~~~~~XXXXXXXXX\n");
+					DebugClass += ($"crosscast Not succesful.~~~~~~~~~~~XXXXXXXXX\n");
 				}
 			}
 			else
 			{
-				DebugClass += $"hitColliders null~~~~~~~~~~~XXXXXXXXX\n";
+				DebugClass += ($"hitcolliders length was: '{hitColliders.Length}'~~~~~~~~~~~XXXXXXXXX\n");
 			}
 			#endregion
 		}
@@ -110,16 +108,12 @@ namespace LogansNavPath
         {
 			Flag_amCorner = true;
 
-			//V_point = ptBefore.V_point + Vector3.Project( ptAFter.V_point - ptBefore.V_point, ptBefore.V_toPrev ); //
-			//V_point = ptBefore.V_point + Vector3.ProjectOnPlane( ptAFter.V_point, ptBefore.V_normal ).normalized;
-			V_point = ptBefore.V_point + Vector3.ProjectOnPlane( (ptAFter.V_point - ptBefore.V_point), ptBefore.V_normal );
+			//V_point = ptBefore.V_point + Vector3.ProjectOnPlane( ptAFter.V_point - ptBefore.V_point, ptBefore.V_normal );
 
-			//Debug.Log($"add '{Vector3.ProjectOnPlane(ptAFter.V_point, ptBefore.V_normal).normalized}'");
+			V_point = LNPS_Utils.CreateCornerPathPoint( ptBefore, ptAFter );
 
 			V_normal = ptBefore.V_normal;
 
-			V_toNext = Vector3.Normalize( ptAFter.V_point - V_point );
-			V_toPrev = Vector3.Normalize( ptBefore.V_point - V_point );
 			
 			flag_switchGravityOff = false;
 			flag_switchGravityOn = false;
@@ -146,6 +140,7 @@ namespace LogansNavPath
 		public void SetMyPreviousPoint( Vector3 prevPt )
 		{
 			V_toPrev = Vector3.Normalize( prevPt - V_point );
+			Dist_toPrev = Vector3.Distance( V_point, prevPt );
 			DebugClass += $"V_toPrev: '{V_toPrev}'\n";
 
 		}
@@ -153,6 +148,7 @@ namespace LogansNavPath
 		public void SetMyNextPoint( Vector3 nxtPt )
 		{
 			V_toNext = Vector3.Normalize( nxtPt - V_point );
+			Dist_toNext = Vector3.Distance( V_point, nxtPt );
 			DebugClass += $"V_toNext: '{V_toPrev}'\n";
 
 		}

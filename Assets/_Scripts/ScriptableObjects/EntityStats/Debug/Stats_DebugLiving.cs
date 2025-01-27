@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "VertigoObjects/Stats_DebugLiving", fileName = "stats_DebugLiving")]
 public class Stats_DebugLiving : ScriptableObject
 {
-    [Header("---------------[[ PATHS ]]-----------------")]
-
+    [Header("---------------[[ PATH LINES ]]-----------------")]
+    public Color Color_PathLines = Color.white;
     //[Range(0f, 3f)]
     //public float Size_PathCones = 0.3f;
     //[Range(0f, 3f)]
@@ -21,7 +21,7 @@ public class Stats_DebugLiving : ScriptableObject
 
 
     [Space(10f)]
-    [Header("---------------[[ PATROL POINT ]]-----------------")]
+    [Header("---------------[[ PATH POINT ]]-----------------")]
 	public Color Color_PathPt;
 	[Range(0f, 0.33f)]
     public float Size_PatrolPointNextArrow =0.118f;

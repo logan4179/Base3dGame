@@ -17,6 +17,8 @@ TagManager:
   - Enemy_basicFlyer
   - PatrolPointGrabber
   - NavMeshOccluder
+  - hlpr_occludePositiveY
+  - hlpr_occludeWall
   layers:
   - Default
   - TransparentFX

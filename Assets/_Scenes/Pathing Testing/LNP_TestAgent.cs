@@ -162,6 +162,12 @@ namespace PV_ForTesting
 			}
 		}
 
+		public void SetMyNavmeshDestination( Vector3 pos )
+		{
+			TravelMode = 0;
+			MyNavMeshAgent.SetDestination( pos );
+		}
+
 		private void OnDrawGizmos()
 		{
 			if (Application.isPlaying)

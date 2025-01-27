@@ -18,12 +18,16 @@ namespace PV_ForTesting
     public class TravelTest : MonoBehaviour
     {
         public LNP_Path MyPath;
+		[Space(5f)]
 
-		public NavMeshPath NmPath;
+		public LNP_Path ExpectedPath;
+		[Space(25f)]
+
+
+		[Header("REFERENCE (EXTERNAL)")]
 		public List<Vector3> SampledPoints = new List<Vector3>();
-
-        [Header("REFERENCE (EXTERNAL)")]
-        public LNP_TestAgent MyAgent;
+        public NavMeshPath NmPath;
+		public LNP_TestAgent MyAgent;
 		public Stats_DebugLiving MyStats;
 
 		[Header("DEBUG")]
@@ -34,14 +38,20 @@ namespace PV_ForTesting
             InitPathObject();
         }
 
-		[ContextMenu("z call InitPathObject()")]
+		[ContextMenu("z - InitPathObject()")]
 		public void InitPathObject()
 		{
-			Debug.Log($"{nameof(TravelTest)}.{nameof(InitPathObject)}()");
+			//Debug.Log($"{nameof(TravelTest)}.{nameof(InitPathObject)}()");
 			MyPath = new LNP_Path(LayerMask.GetMask("lr_EnvSolid"));
 		}
 
-		[ContextMenu("z call CreatePaths()")]
+		[ContextMenu("z - SavePath()")]
+		public void SavePath()
+		{
+			ExpectedPath = new LNP_Path( MyPath );
+		}
+
+		[ContextMenu("z - CreatePaths()")]
 		public void CreatePaths()
 		{
 			DBG_CreatePath = $"{nameof(TravelTest)}.{nameof(CreatePaths)}() to '{transform.position}'\n";
@@ -53,7 +63,7 @@ namespace PV_ForTesting
 			CreateNavMeshPath();
 		}
 
-		[ContextMenu("z call TravelToMeViaNavmeshAgent()")]
+		[ContextMenu("z - TravelToMeViaNavmeshAgent()")]
 		public void TravelToMeViaNavmeshAgent()
 		{
 			DBG_CreatePath = $"{nameof(TravelToMeViaNavmeshAgent)}()\n";
@@ -61,7 +71,7 @@ namespace PV_ForTesting
 
 			MyAgent.TravelMode = 0;
 			//MyAgent.MyNavMeshAgent.SetPath( NmPath );
-			MyAgent.MyNavMeshAgent.SetDestination( transform.position );	
+			MyAgent.SetMyNavmeshDestination( transform.position );	
 		}
 
 		public void CreateNavMeshPath()
@@ -116,29 +126,40 @@ namespace PV_ForTesting
 
 		private void OnDrawGizmos()
 		{	
-			if( !AmDrawingGizmos )
+			
+		}
+
+		public void DrawMyGizmos()
+		{
+			if (!AmDrawingGizmos)
 			{
 				return;
 			}
 
-			if ( AmDrawingLnpPath && MyPath.AmValid )
+			Handles.color = Color.yellow;
+			Handles.Label( transform.position + (Vector3.up * 3f), name );
+			Handles.color = Color.white;
+
+			if (AmDrawingLnpPath && MyPath.AmValid)
 			{
-				PV_DebugUtilities.DrawNumberedPath( MyStats, MyPath );
+				PV_DebugUtilities.DrawNumberedPath(MyStats, MyPath);
 			}
 
-			if ( AmDrawingNavmeshPath && SampledPoints != null && SampledPoints.Count > 0 )
+			if (AmDrawingNavmeshPath && SampledPoints != null && SampledPoints.Count > 0)
 			{
-				Gizmos.color = Color.red;
-				Vector3 vUp = (Vector3.up * 0.5f) + (Vector3.forward * 0.2f);
-				for ( int i = 0;i < SampledPoints.Count; i++ )
+				Vector3 vUp = (Vector3.up * 0.15f) + (Vector3.forward * 0.1f);
+				for (int i = 0; i < SampledPoints.Count; i++)
 				{
-					Gizmos.DrawLine( SampledPoints[i], SampledPoints[i] + vUp );
-					Handles.Label( SampledPoints[i] + vUp, $"nm{i}" );
+					Gizmos.color = new Color(1f, 0f, 1.1f, 0.3f);
+					Gizmos.DrawLine(SampledPoints[i], SampledPoints[i] + vUp);
+					Gizmos.color = Color.red;
 
-					if( i < SampledPoints.Count - 1 )
+					Handles.Label(SampledPoints[i] + vUp, $"nm{i}");
+
+					if (i < SampledPoints.Count - 1)
 					{
 						Handles.color = Color.red;
-						Gizmos.DrawLine(SampledPoints[i], SampledPoints[i+1]);
+						Gizmos.DrawLine(SampledPoints[i], SampledPoints[i + 1]);
 
 						//Handles.DrawDottedLine( SampledPoints[i], SampledPoints[i + 1], MyStats.Size_DottedLine );
 					}

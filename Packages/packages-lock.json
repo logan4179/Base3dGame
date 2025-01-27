@@ -37,6 +37,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.loganland.logansnavigationextension": {
+      "version": "file:LogansNavigationExtension",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.loganland.logansnavpath": {
       "version": "file:LogansPathingSystem",
       "depth": 0,

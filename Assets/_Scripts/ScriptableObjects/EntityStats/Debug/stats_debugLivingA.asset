@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0275139fb10728d4295c1ffd42bbbd68, type: 3}
   m_Name: stats_debugLivingA
   m_EditorClassIdentifier: 
+  Color_PathLines: {r: 1, g: 0.5943396, b: 0.82488537, a: 1}
   Height_PathVerticalLine: 0.15
   Width_PathVerticalLine: 4.08
   Size_DottedLine: 6.09
