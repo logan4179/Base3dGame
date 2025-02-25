@@ -1,0 +1,29 @@
+{
+    "name": "GameScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:51bbd3dfc9fa7e843be2357499677a78",
+        "GUID:62a0ea3be2a73bd42a058cb965c2d0eb",
+        "GUID:614639f21db06734e8abe809882015e5",
+        "GUID:a1c96a9b6f01d934a9ca6140a8ea4e54",
+        "GUID:542b5616b16930b4299ade5387596bd7",
+        "GUID:f0709e0acd1746f4cada73798ae78c50",
+        "GUID:c434ab400108c8c4fb973374f9a8e269",
+        "GUID:fd526ab8c00644f47949b3eab4a06789",
+        "GUID:1002545387a6589448dc36798d70bdb0",
+        "GUID:0382340c35c43754f86b05eea2513c81",
+        "GUID:bb663789ad2e5df4e90aa5671da6e6b6",
+        "GUID:8011d28e7a9ce8248820037edb15b689",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

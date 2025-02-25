@@ -2893,7 +2893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -2908,7 +2908,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.07
+  m_VoxelSize: 0.060000002
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 6abdcd695e39b36429f1e6aa4651dc78, type: 2}
   m_BuildHeightMesh: 0
@@ -9323,7 +9323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -9338,7 +9338,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.07
+  m_VoxelSize: 0.060000002
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 1c5685d024f3b6040ab26b8e6e64c15f, type: 2}
   m_BuildHeightMesh: 0
@@ -9836,7 +9836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -9851,7 +9851,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.07
+  m_VoxelSize: 0.060000002
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: fdaeb575aa8d40f45bb3253f29dc6b9d, type: 2}
   m_BuildHeightMesh: 0
@@ -10750,7 +10750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: -0.0000034443678, y: -1.1983528, z: -5.7430935}
   m_EndPoint: {x: -0.0000034710797, y: -0.7318462, z: -5.294943}
   m_Width: 5.536743
@@ -17872,7 +17872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 0.000006886959, y: 0.9386268, z: -6.127441}
   m_EndPoint: {x: 0.000007762856, y: 0.20470983, z: -5.698599}
   m_Width: 16.751589
@@ -23294,7 +23294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 0, y: 0.45804217, z: 2.7769513}
   m_EndPoint: {x: 0, y: 0.73721313, z: 3.2699966}
   m_Width: 7.0925827
@@ -29299,7 +29299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: -3.044571, y: -0.85777926, z: 0}
   m_EndPoint: {x: -3.37648, y: -1.198349, z: 0}
   m_Width: 13.336609
@@ -29319,7 +29319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: -2.630005, y: 1.2000022, z: 0}
   m_EndPoint: {x: -3.044571, y: 0.8546567, z: 0}
   m_Width: 13.607239
@@ -33218,7 +33218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: -0.0000007695498, y: -0.9778354, z: -4.110002}
   m_EndPoint: {x: 0.00000058526433, y: -0.5000179, z: -3.7028499}
   m_Width: 8.263852
@@ -43411,7 +43411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 0.58587456, y: 1.1921551, z: 0}
   m_EndPoint: {x: 0.9688072, y: 0.7968633, z: 0}
   m_Width: 13.386253
@@ -43431,7 +43431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 0.9688072, y: -0.8082795, z: 0}
   m_EndPoint: {x: 1.3171539, y: -1.2465062, z: 0}
   m_Width: 13.371544
@@ -45151,7 +45151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -45166,9 +45166,9 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.07
+  m_VoxelSize: 0.060000002
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 620b1624ad740d74a87ac171c72a37d1, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 5e5e3e87acbb23147a97a3034fb3d0c4, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1372290715
 GameObject:
@@ -50097,7 +50097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 0, y: -2.0582209, z: 0.5}
   m_EndPoint: {x: 0, y: -2.4099994, z: 0.7911792}
   m_Width: 11.845093
@@ -50394,7 +50394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: -0.000005578608, y: -1.04165, z: -2.1638794}
   m_EndPoint: {x: -0.0000043345176, y: -0.49997824, z: -1.3526585}
   m_Width: 5.1484456
@@ -51115,7 +51115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 0, y: -0.88565123, z: 7}
   m_EndPoint: {x: 0, y: -1.198349, z: 7.3732452}
   m_Width: 5.41626
@@ -51517,7 +51517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -51532,7 +51532,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.07
+  m_VoxelSize: 0.060000002
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 2964e1e7753fc1b49acd72e21d81748a, type: 2}
   m_BuildHeightMesh: 0
@@ -53156,7 +53156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 11.456734, y: -17.49836, z: 0}
   m_EndPoint: {x: 11.87648, y: -17.629234, z: 0}
   m_Width: 27.1
@@ -56678,7 +56678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: -0.73526764, y: 1.1645517, z: 0}
   m_EndPoint: {x: -1.0853653, y: 0.7709222, z: 0}
   m_Width: 3.35
@@ -56698,7 +56698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: -1.3785477, y: -0.79923344, z: 0}
   m_EndPoint: {x: -1.0853653, y: -0.70435715, z: 0}
   m_Width: 3.1940231
@@ -58440,7 +58440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 0.0000019238382, y: -0.5211532, z: -4.3100004}
   m_EndPoint: {x: -0.0000013949174, y: -0.22997543, z: -3.6668172}
   m_Width: 11.466905
@@ -62022,7 +62022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 0, y: 0.48739767, z: -6.259997}
   m_EndPoint: {x: 0, y: 0.21002987, z: -5.9043565}
   m_Width: 19.155207
@@ -63656,7 +63656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 3.4177628, y: -1.198349, z: 0}
   m_EndPoint: {x: 3.044571, y: -0.74438035, z: 0}
   m_Width: 13.528473
@@ -63676,7 +63676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 2.5873642, y: 1.200002, z: 0}
   m_EndPoint: {x: 3.044571, y: 0.85882497, z: 0}
   m_Width: 13.526123
@@ -67351,7 +67351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_StartPoint: {x: 0, y: -1.198349, z: -7.2906723}
   m_EndPoint: {x: 0, y: -1.0336118, z: -7}
   m_Width: 5.6595764
